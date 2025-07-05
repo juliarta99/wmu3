@@ -29,30 +29,5 @@
         <div class="relative w-full max-w-sm h-100">
             <iframe id="ytplayer" type="text/html" src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" frameborder="0"></iframe>
         </div>
-
-
-        <script>
-            function loadTikTokVideo() {
-                const input = document.getElementById("videoIdInput").value.trim();
-
-                if (!input) {
-                    alert("Please enter a TikTok video URL.");
-                    return;
-                }
-
-                // Ambil ID dari format: /video/1234567890
-                const match = input.match(/\/video\/(\d+)/);
-
-                if (!match || !match[1]) {
-                    alert("Invalid TikTok URL. Make sure the link contains '/video/{id}'");
-                    return;
-                }
-
-                const videoId = match[1]; // ID TikTok
-
-                const iframe = document.getElementById("tiktokPlayer");
-                iframe.src = `https://www.tiktok.com/player/v1/${videoId}?music_info=1&controls=0`;
-            }
-        </script>
     </body>
 </html>
