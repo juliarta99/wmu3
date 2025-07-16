@@ -8,4 +8,64 @@
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-poppins: "Poppins", sans-serif;
+    --color-one: #180048;
+    --color-two: #291358;
+    --color-three: #1F005E;
+    --color-four: #350B89;
+    --color-five: #512C9D;
+    --color-six: #5025AB;
+    --color-seven: #D42AE4;
+    --color-light: #FCFDFD;
+    --color-bg-one: #180048;
+    --color-bg-two: #1F005E;
+    --color-28-transparent: rgba(162, 149, 172, .28);
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+.bg-main-gradient{
+    @apply bg-gradient-to-r from-six to-seven;
+}
+
+.bg-second-gradient{
+    @apply bg-gradient-to-r from-seven to-two;
+}
+
+.bg-dark-gradient{
+    @apply bg-gradient-to-b from-[#0A091D] from-0% via-one via-10% to-[#0A091D] to-100% bg-no-repeat;
+}
+
+.swiper-wrapper {
+    transition-timing-function: linear !important;
+}
+
+.hexagon{
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+
+.animate-spin-slow{
+    animation: spin 10s infinite linear;
+}
+
+@keyframes rotate-swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(30deg);
+  }
+  50% {
+    transform: rotate(-30deg);
+  }
+  75% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-rotate-swing {
+    animation: rotate-swing 1.5s ease-in-out;
 }
