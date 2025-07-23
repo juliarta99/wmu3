@@ -10,15 +10,15 @@ class Showcase extends Model
         'title',
         'slug',
         'cover',
-        'no_team',
-        'year',
         'description',
         'champion',
         'youtube_id',
+        'team_id'
     ];
 
-    public function contributors() 
+
+    public function team() 
     {
-        return $this->hasMany(Contributor::class, 'showcase_id');
+        return $this->belongsTo(Team::class, 'team_id');
     }
 }

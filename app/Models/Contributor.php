@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
+use App\Models\Team;
 use Illuminate\Database\Eloquent\Model;
 
 class Contributor extends Model
 {
     protected $fillable = [
         'name',
-        'showcase_id',
+        'team_id',
     ];
 
-    public function showcase() 
+    public function team() 
     {
-        return $this->belongsTo(Showcase::class, 'showcase_id');
+        return $this->belongsTo(Team::class, 'team_id');
     }
 }
