@@ -1,5 +1,10 @@
 <?php
 
+use App\Models\Visitor;
+use App\Models\Showcase;
+use App\Models\ShortLink;
+use App\Events\HomeAdminEvent;
+use App\Http\Controllers\HomeAdmin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,3 +26,11 @@ Route::get('/quiz', function () {
     $title = "Quiz - ";
     return view('quiz', compact('title'));
 })->name('quiz');
+
+//test websoket
+Route::get('/homeadmin', function () {
+        broadcastParseValue();
+        return view('websoket'); 
+    });
+
+Route::get('/test-broadcast', [HomeAdmin::class, 'updateData']);

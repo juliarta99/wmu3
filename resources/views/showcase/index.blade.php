@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="py-24 min-h-screen">
+    <section class="py-24 min-h-screen flex items-center justify-center">
         <div class="container mx-auto flex items-center justify-center gap-10">
             <img src="{{ asset('assets/images/maskot/4.png') }}" alt="" class="max-w-[30%]">
             <div class="">
@@ -16,7 +16,9 @@
             </div>
         </div>
     </section>
-    <section class="py-24">
+    <section class="py-24 relative">
+        <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute -translate-y-1/2 -z-1" />
+        <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute translate-y-1/2 bottom-0 -z-1" />
         <div class="container mx-auto">
             <div class="flex items-center gap-5 rounded-lg py-3 px-5 shadow-lg bg-light dark:bg-[#282828] border-[1px] border-gray-200 dark:border-gray-600">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="fill-black dark:fill-light size-6">

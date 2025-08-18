@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="py-24">
+    <section class="py-24 relative">
+        <img src="{{ asset('assets/images/gradient-blur-3.png') }}" class="w-full absolute translate-y-1/2 bottom-0 -z-1" />
         <div class="container mx-auto">
             <img src="{{ asset('assets/images/img.png') }}" class="aspect-video w-full max-w-2xl mx-auto object-cover rounded-2xl shadow-lg" alt="">
             <div class="mt-10 dark:bg-black bg-light shadow-2xl rounded-xl p-8">

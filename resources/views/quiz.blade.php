@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="py-24 min-h-screen">
-        <div class="container mx-auto flex items-center justify-center gap-10">
+    <section class="py-24 min-h-screen flex items-center justify-center">
+        <div class="container mx-auto max-w-6xl flex items-center justify-center gap-10">
             <img src="{{ asset('assets/images/maskot/3.png') }}" alt="" class="max-w-[30%]">
             <div class="">
                 <h2 class="text-center text-xl text-seven font-semibold">Quiz</h2>
@@ -17,8 +17,9 @@
         </div>
     </section>
 
-    <section class="py-24 min-h-screen grayscale-100 cursor-not-allowed">
-        <div class="container mx-auto flex items-center justify-center gap-10">
+    <section class="py-24 min-h-screen relative flex items-center justify-center">
+        <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute translate-y-1/2 bottom-0 -z-1" />
+        <div class="container mx-auto max-w-6xl flex items-center justify-center gap-10 grayscale-100 cursor-not-allowed">
             <div class="">
                 <h2 class="text-center text-xl text-seven font-semibold">Quiz</h2>
                 <h1 class="text-center text-5xl text-black dark:text-light font-bold mt-1">Post-Test</h1>

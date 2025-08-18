@@ -25,33 +25,6 @@
    <meta name="twitter:description" content="Workshop Multimedia Udayana adalah">
    <meta name="twitter:image" content="https://wmu.com/assets/meta-tag.png">
 
-   {{-- Structured Data (JSON-LD for SEO) --}}
-   <script type="application/ld+json">
-   {
-     "@context": "https://schema.org",
-     "@type": "Event",
-     "name": "Workshop Multimedia Udayana",
-     "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-     "eventStatus": "https://schema.org/EventScheduled",
-     "location": {
-       "@type": "Place",
-       "name": "Universitas Udayana",
-       "address": {
-         "@type": "PostalAddress",
-         "addressLocality": "Bali",
-         "addressCountry": "ID"
-       }
-     },
-     "image": ["https://wmu.com/assets/meta-tag.png"],
-     "description": "Workshop Multimedia Udayana adalah",
-     "organizer": {
-       "@type": "Organization",
-       "name": "Kementerian Komunikasi dan Informasi Badan Eksekutif Mahasiswa Universitas Udayana",
-       "url": "https://wmu.com"
-     }
-   }
-   </script>
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,7 +43,6 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body class="min-h-screen overflow-x-hidden bg-white dark:bg-gradient-to-b dark:from-[#0A091D] dark:from-0% dark:via-one dark:via-10% dark:to-[#0A091D] dark:to-100% dark:bg-no-repeat">

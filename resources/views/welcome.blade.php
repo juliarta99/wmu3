@@ -3,16 +3,16 @@
 @section('content')
     <section>
         <div class="pb-24 pt-48 min-h-screen flex flex-col items-center justify-center gap-5">
-            <div class="container mx-auto flex flex-col items-center justify-center gap-5">
+            <div class="container mx-auto flex flex-col items-center justify-center gap-10">
                 <div class="flex flex-col items-center justify-center gap-3 max-w-3xl">
-                    <h1 class="text-4xl font-bold text-black dark:text-light text-center"><span class="text-five">WORKSHOP</span>  MULTIMEDIA<br>UDAYANA <span class="text-five">#3</span></h1>
+                    <h1 class="text-4xl font-bold text-black dark:text-light text-center"><span class="bg-main-gradient bg-clip-text text-transparent">WORKSHOP</span>  MULTIMEDIA<br>UDAYANA <span class="bg-main-gradient bg-clip-text text-transparent">#3</span></h1>
                     <p class="text-center text-black dark:text-light">Setiap momen yang kita rekam hari ini adalah investasi untuk dikenang di masa depan. Dengan mendokumentasikannya, kita tidak hanya menyimpan gambar atau video, tetapi juga cerita dan perasaan yang akan tetap hidup di dalamnya</p>
                 </div>
                 <button class="py-3 px-5 rounded-full bg-main-gradient cursor-pointer text-light">
                     Register Now
                 </button>
             </div>
-            <div class="mt-10 w-full">
+            <div class="mt-10 w-full relative">
                 <div class="swiper swiper-3">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -53,37 +53,40 @@
                         </div>
                     </div>
                 </div>
+                <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute -translate-y-1/2 top-[50%] -z-1" />
             </div>
         </div>
     </section>
 
     <section class="py-24">
         <div class="container mx-auto">
+            <h5 class="text-seven text-center scroll-mt-24" id="about">Get to Know Us</h5>
+            <h1 class="text-3xl text-black dark:text-light text-center font-bold">About</h1>
+        </div>
+
+        <section class="py-30 grid grid-cols-[max-content_1fr] gap-10 relative max-w-6xl mx-auto container">
+            <div class="w-130 h-130 bg-seven/30 blur-[1000rem] absolute top-0 left-[-50%] translate-x-1/2 -z-1"></div>
+            <img src="{{ asset('assets/images/maskot/3.png') }}" class="w-88 max-w-full" alt="">
             <div class="">
-                <h5 class="text-seven text-center scroll-mt-24" id="about">Get to Know Us</h5>
-                <h1 class="text-3xl text-black dark:text-light text-center font-bold">About</h1>
+                <h5 class="text-seven">About Us</h5>
+                <h2 class="text-2xl text-black dark:text-light font-semibold mt-1">What is Workshop Multimedia Udayana?</h2>
+                <p class="text-black dark:text-light mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate est hic saepe quibusdam! Illum iusto ullam accusamus veniam, excepturi nulla tenetur neque veritatis! Maiores, dignissimos cum? Voluptates qui eligendi modi enim ullam. Deserunt iste nobis commodi saepe harum eius fuga debitis recusandae est autem laborum, eaque, qui dolorem, totam laudantium.   </p>
             </div>
+        </section>
 
-            <section class="py-30 grid grid-cols-[max-content_1fr] gap-10 relative max-w-6xl mx-auto">
-                <div class="w-130 h-130 bg-seven/30 blur-[1000rem] absolute top-0 left-[-50%] translate-x-1/2 -z-1"></div>
-                <img src="{{ asset('assets/images/maskot/3.png') }}" class="w-88 max-w-full" alt="">
-                <div class="">
-                    <h5 class="text-seven">About Us</h5>
-                    <h2 class="text-2xl text-black dark:text-light font-semibold mt-1">What is Workshop Multimedia Udayana?</h2>
-                    <p class="text-black dark:text-light mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate est hic saepe quibusdam! Illum iusto ullam accusamus veniam, excepturi nulla tenetur neque veritatis! Maiores, dignissimos cum? Voluptates qui eligendi modi enim ullam. Deserunt iste nobis commodi saepe harum eius fuga debitis recusandae est autem laborum, eaque, qui dolorem, totam laudantium.   </p>
-                </div>
+        <div class="relative">
+            <img src="{{ asset('assets/images/gradient-blur-3.png') }}" class="w-full absolute top-0 -z-1" />
+            <section class="py-30 max-w-lg mx-auto container">
+                <div class="w-130 h-130 bg-seven/20 blur-[1000rem] absolute top-[50%] right-[-10%] translate-x-1/2 -z-1"></div>
+                <h5 class="text-seven text-center">About Out Theme</h5>
+                <h1 class="text-center text-4xl text-black dark:text-light mt-5 font-bold">“Record Every <span class="text-seven">Moments</span> <br> To Relive In <span class="text-seven">The Future</span> ”</h1>
+                <p class="text-black dark:text-light mt-8 text-center">“Setiap momen yang kita abadikan dalam sebuah rekaman, akan terasa kembali hidup euforianya saat kita menontonnya kembali”</p>
             </section>
+        </div>
 
-            <div class="relative">
-                <section class="py-30 max-w-lg mx-auto">
-                    <div class="w-130 h-130 bg-seven/20 blur-[1000rem] absolute top-[50%] right-[-10%] translate-x-1/2 -z-1"></div>
-                    <h5 class="text-seven text-center">About Out Theme</h5>
-                    <h1 class="text-center text-4xl text-black dark:text-light mt-5 font-bold">“Record Every <span class="text-seven">Moments</span> <br> To Relive In <span class="text-seven">The Future</span> ”</h1>
-                    <p class="text-black dark:text-light mt-8 text-center">“Setiap momen yang kita abadikan dalam sebuah rekaman, akan terasa kembali hidup euforianya saat kita menontonnya kembali”</p>
-                </section>
-            </div>
-
-            <section class="py-30 max-w-5xl mx-auto">
+        <div class="relative">
+            <img src="{{ asset('assets/images/gradient-blur-3.png') }}" class="w-full absolute bottom-0 -z-1" />
+            <section class="py-30 max-w-5xl container mx-auto">
                 <h5 class="text-seven text-center">About Out Logo</h5>
                 <h1 class="text-center text-4xl text-black dark:text-light mt-5 font-bold">Record Today, Cherish Tomorrow</h1>
                 <img src="{{ asset('assets/images/logo.png') }}" class="max-w-100 mx-auto my-12" alt="">
@@ -110,8 +113,11 @@
                     </div>
                 </div>
             </section>
-
-            <section class="py-30 max-w-5xl mx-auto">
+        </div>
+        
+        <div class="relative">
+            <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute -translate-y-1/2 top-[50%] -z-1" />
+            <section class="py-30 max-w-5xl mx-auto container">
                 <h5 class="text-seven text-center">About Out Maskot</h5>
                 <h1 class="text-center text-4xl text-black dark:text-light mt-5 font-bold">LORY</h1>
                 <h5 class="text-center text-black dark:text-light mt-2">“Si Burung Hantu Cerdas dengan Penglihatan yang Tajam”</h5>
@@ -154,7 +160,8 @@
         </div>
     </section>
 
-    <section class="py-24">
+    <section class="py-24 relative">
+        <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute -translate-y-1/2 top-[50%] -z-1" />
         <div class="container mx-auto relative">
             <div class="w-130 h-130 bg-seven/30 blur-[1000rem] absolute top-0 right-[-50%] -translate-x-1/2 -z-1"></div>
             <h5 class="text-seven text-center">Masterpiece</h5>
@@ -271,6 +278,7 @@
     </section>
 
     <section class="py-24 relative">
+        <img src="{{ asset('assets/images/gradient-blur-3.png') }}" class="w-full absolute -top-[50%] -z-1" />
         <div class="w-130 h-130 bg-seven/10 blur-[1000rem] absolute top-0 right-[-50%] -translate-x-1/2 -z-1"></div>
         <div class="container mx-auto">
             <h5 class="text-seven text-center">Sponsor</h5>
@@ -325,6 +333,7 @@
     </section>
 
     <section class="py-24 relative">
+        <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute -translate-y-1/2 top-[50%] -z-1" />
         <div class="w-130 h-130 bg-seven/30 blur-[1000rem] absolute top-0 left-[-50%] translate-x-1/2 -z-1"></div>
         <div class="container mx-auto">
             <h5 class="text-seven text-center scroll-mt-24" id="faq">FAQ</h5>
@@ -417,7 +426,8 @@
         </div>
     </section>
 
-    <section class="py-24">
+    <section class="py-24 relative">
+        <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute -translate-y-1/2 top-[50%] -z-1" />
         <div class="container mx-auto">
             <h5 class="text-seven text-center scroll-mt-24" id="cp">CP</h5>
             <h1 class="text-4xl text-black dark:text-light text-center font-bold">Contact Person</h1>
