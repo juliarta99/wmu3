@@ -46,13 +46,17 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body class="min-h-screen overflow-x-hidden bg-white dark:bg-gradient-to-b dark:from-[#0A091D] dark:from-0% dark:via-one dark:via-10% dark:to-[#0A091D] dark:to-100% dark:bg-no-repeat">
-    @include('layouts.header')
+  
+    <main class="max-w-full overflow-hidden relative">
+      @include('layouts.header')
+  
+      <img src="{{ asset('assets/images/gradient-blur.png') }}" class="w-full absolute top-0 -z-1" />
+     
+      @yield('content')
+     
+      @include('layouts.footer')
+    </main>
     
-    <img src="{{ asset('assets/images/gradient-blur.png') }}" class="w-full absolute top-0 -z-1" />
-
-    @yield('content')
-    
-    @include('layouts.footer')
     <script>
       const navbar = document.getElementById('navbar');
 
@@ -97,6 +101,50 @@
           localStorage.theme = 'dark';
           addRotateAnimation(sunIcon);
         }
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const humberger = document.getElementById("humberger");
+        const navMobile = document.getElementById("nav-mobile");
+        const line1 = document.querySelector("#humberger .line1");
+        const line2 = document.querySelector("#humberger .line2");
+        const line3 = document.querySelector("#humberger .line3");
+
+        function toggleNav() {
+          line1.classList.toggle("rotate-45");
+          line1.classList.toggle("translate-y-1");
+
+          line2.classList.toggle("scale-0");
+
+          line3.classList.toggle("-rotate-45");
+          line3.classList.toggle("-translate-y-2");
+
+          navMobile.classList.toggle("-translate-y-[100%]");
+          navMobile.classList.toggle("translate-y-0");
+        }
+
+        humberger.addEventListener("click", (e) => {
+          e.stopPropagation();
+          toggleNav();
+        });
+
+        document.addEventListener("click", (e) => {
+          if (
+            !navMobile.classList.contains("-translate-y-[100%]") && 
+            !navMobile.contains(e.target) && 
+            !humberger.contains(e.target) 
+          ) {
+            toggleNav();
+          }
+        });
+
+        navMobile.querySelectorAll("a, button").forEach((el) => {
+          el.addEventListener("click", () => {
+            if (!navMobile.classList.contains("-translate-y-[100%]")) {
+              toggleNav();
+            }
+          });
+        });
       });
     </script>
 
