@@ -1,10 +1,8 @@
 <?php
 
-use App\Models\Visitor;
-use App\Models\Showcase;
-use App\Models\ShortLink;
-use App\Events\HomeAdminEvent;
 use App\Http\Controllers\HomeAdmin;
+use App\Http\Controllers\ShowcaseController;
+use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,6 +24,22 @@ Route::get('/quiz', function () {
     $title = "Quiz - ";
     return view('quiz', compact('title'));
 })->name('quiz');
+
+
+Route::prefix('dashboard')->name('dashboard.')->group(function () {
+    Route::get('/', function () {
+        $title = "Dashboard - ";
+        return view('dashboard.index', compact('title'));
+    })->name('index');
+
+    Route::resource('team', TeamController::class);
+    Route::resource('showcase', ShowcaseController::class);
+});
+
+Route::get('/dashboard/shortener', function () {
+    $title = "Dashboard Shortener - ";
+    return view('dashboard.shortener.index', compact('title'));
+})->name('dashboard.shortener.index');
 
 //test websoket
 Route::get('/homeadmin', function () {

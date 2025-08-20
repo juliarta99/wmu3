@@ -11,236 +11,315 @@ use Illuminate\Support\Facades\Storage;
 
 class TeamController extends Controller
 {
-    public function addTeam(Request $request) {
+    public function index(Request $request)
+    {
+        $title = "Dashboard Team - ";
+        
+        $query = Team::query();
+        
+        if ($request->has('search') && !empty($request->search)) {
+            $query->where('name', 'like', '%' . $request->search . '%')
+                  ->orWhere('year', 'like', '%' . $request->search . '%');
+        }
+        
+        if ($request->has('year') && !empty($request->year)) {
+            $query->where('year', $request->year);
+        }
+        
+        $sortBy = $request->get('sort_by', 'latest');
+        switch ($sortBy) {
+            case 'name':
+                $query->orderBy('name', 'asc');
+                break;
+            case 'name_desc':
+                $query->orderBy('name', 'desc');
+                break;
+            case 'year':
+                $query->orderBy('year', 'desc');
+                break;
+            case 'oldest':
+                $query->orderBy('created_at', 'asc');
+                break;
+            default:
+                $query->latest();
+                break;
+        }
+        
+        $teams = $query->paginate(10)->appends($request->query());
+        return view('dashboard.team.index', compact('title', 'teams'));
+    }
+
+    public function create()  {
+        $title = "Dashboard Create Team - ";
+        return view('dashboard.team.create', compact('title'));
+    }
+
+    public function edit(Team $team)  {
+        $team->load('contributors');
+        $title = "Dashboard Create Team - ";
+        return view('dashboard.team.edit', compact('title', 'team'));
+    }
+
+
+    public function store(Request $request) {
         try {
             $currentYear = now()->year;
-
             $validated = $request->validate([
-                'no_team' => [
+                'name' => [
                     'required',
-                    'integer',
-                    Rule::unique('teams')->where(function ($query) use ($currentYear) {
-                        return $query->where('year', $currentYear);
+                    'string',
+                    'max:255',
+                    Rule::unique('teams', 'name')->where(function ($query) use ($request) {
+                        return $query->where('year', $request->year);
                     }),
                 ],
-                'name' => 'required|array|min:1',
-                'name.*' => 'required|string|max:100',
+                'year' => [
+                    'required',
+                    'integer',
+                    'min:2024',
+                    'max:' . $currentYear,
+                ],
+                'contributors' => 'required|array|min:1',
+                'contributors.*' => 'required|string|max:100',
+            ], [
+                'name.required' => 'Nama team wajib diisi.',
+                'name.unique' => 'Nama team sudah ada untuk tahun ini.',
+                'name.max' => 'Nama team maksimal 255 karakter.',
+                'year.required' => 'Tahun wajib diisi.',
+                'year.integer' => 'Tahun harus berupa angka.',
+                'year.min' => 'Tahun minimal 2024.',
+                'year.max' => 'Tahun maksimal ' . $currentYear . '.',
+                'contributors.required' => 'Minimal harus ada 1 contributor.',
+                'contributors.min' => 'Minimal harus ada 1 contributor.',
+                'contributors.*.required' => 'Nama contributor wajib diisi.',
+                'contributors.*.max' => 'Nama contributor maksimal 100 karakter.',
             ]);
 
-            $team = Team::create([
-                'no_team' => $validated["no_team"],
-                'year' => now()->year,
-            ]);
-
-            $contributors = [];
-
-            foreach($validated["name"] as $name) {
-                $contributor = Contributor::create([
-                    "name" => $name,
-                    "team_id" => $team->id
+            $result = DB::transaction(function () use ($validated) {
+                $team = Team::create([
+                    'name' => $validated["name"],
+                    'year' => $validated["year"],
                 ]);
 
-                array_push($contributors, $contributor);
+                $contributors = [];
+                foreach($validated["contributors"] as $name) {
+                    $contributor = Contributor::create([
+                        "name" => trim($name),
+                        "team_id" => $team->id
+                    ]);
+                    $contributors[] = $contributor;
+                }
+
+                return [
+                    'team' => $team,
+                    'contributors' => $contributors
+                ];
+            });
+
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Team berhasil ditambahkan!',
+                    'team' => $result['team'],
+                    'contributors' => $result['contributors']
+                ], 201);
             }
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Data berhasil disimpan.',
-                'team' => $team,
-                'contributors' => $contributors
-            ], 201);
-        } catch (\Throwable $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Gagal menyimpan data.',
-                'error' => $e->getMessage()
-            ], 500);
-        }
-    }
+            return redirect()->route('dashboard.team.index')
+                            ->with('success', 'Team berhasil ditambahkan!');
 
-
-    public function editTeam(Request $request, $team_id) {
-        try {
-            $currentYear = now()->year;
-
-            $validated = $request->validate([
-                'no_team' => [
-                'sometimes',
-                'integer',
-                Rule::unique('teams', 'no_team')
-                    ->ignore($team_id)
-                    ->where(function ($query) use ($currentYear) {
-                        return $query->where('year', $currentYear);
-                    }),
-            ],
-                'name' => 'sometimes|array',
-                'name.*' => 'required|string|max:100',
-                'editcontributors' => 'sometimes|array',
-                'editcontributors.*.id' => 'required|integer',
-                'editcontributors.*.value' => 'required|string|max:100',
-                'deletecontributors' => 'sometimes|array',
-                'deletecontributors.*' => 'required|integer',
-            ]);
-
-            $team = Team::findOrFail($team_id);
-
-            if (isset($validated["deletecontributors"]) &&
-                $team->contributors()->count() === count($validated["deletecontributors"])) {
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            if ($request->expectsJson()) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Data contributor tidak dapat dihapus semua',
+                    'message' => 'Data yang dimasukkan tidak valid.',
+                    'errors' => $e->errors()
                 ], 422);
             }
-
-            $deleteIds = $validated['deletecontributors'] ?? [];
-
-            foreach ($validated['editcontributors'] ?? [] as $edit) {
-                if (in_array($edit['id'], $deleteIds)) {
-                    return response()->json([
-                        'success' => false,
-                        'message' => 'data tidak dapat dihapus dan diedit secara bersamaan',
-                    ], 422);
-                }
-            }
-
-            DB::beginTransaction();
-
-            $team["no_team"] = array_key_exists("no_team", $validated)
-                    ? $validated["no_team"] : $team->no_team;
-            $team->save();
-
-            $contributors = [];
-            if (!empty($validated['name'])) {
-                foreach ($validated['name'] as $name) {
-                    $contributor = Contributor::create([
-                        'name' => $name,
-                        'team_id' => $team->id
-                    ]);
-
-                    array_push($contributors, $contributor);
-                }
-            } 
-
-            if (!empty($validated["editcontributors"])) {
-                foreach ($validated["editcontributors"] as $edit) {
-                    $editContributor = Contributor::findOrFail($edit["id"]);
-
-                    if ($editContributor->team_id !== $team->id) {
-                        return response()->json([
-                            'success' => false,
-                            'message' => 'Contributor tidak termasuk dalam team ini.',
-                        ], 403);
-                    }
-
-                    $editContributor["name"] = $edit["value"];
-                    $editContributor->save();
-                }
-            } 
-
-            if (!empty($validated["deletecontributors"])) {
-                foreach ($validated["deletecontributors"] as $id) {
-                    $deleteContributor = Contributor::findOrFail($id);
-
-                    if ($deleteContributor->team_id !== $team->id) {
-                        return response()->json([
-                            'success' => false,
-                            'message' => 'Contributor tidak termasuk dalam team ini.',
-                        ], 403);
-                    }
-
-                    $deleteContributor->delete();
-                }
-            } 
             
-            DB::commit();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Data berhasil diedit.',
-                'team' => Team::with('contributors')->find($team->id),
-            ], 200);
+            return redirect()->back()
+                            ->withErrors($e->errors())
+                            ->withInput();
+                            
         } catch (\Throwable $e) {
-            DB::rollBack();
-            return response()->json([
-                'success' => false,
-                'message' => 'Gagal mengedit data',
-                'error' => $e->getMessage()
-            ], 500);
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Terjadi kesalahan sistem.',
+                    'error' => config('app.debug') ? $e->getMessage() : null
+                ], 500);
+            }
+            
+            return redirect()->back()
+                            ->with('error', 'Terjadi kesalahan sistem.')
+                            ->withInput();
         }
     }
 
-    public function showTeam(Request $request) {
-        $teams = Team::with(['contributors', 'showcases'])
-            ->when($request->time, function ($query, $time) {
-                if ($time == "terbaru") {
-                    $query->orderBy('created_at', 'desc');
-                } elseif ($time == "terlama") {
-                    $query->orderBy('created_at', 'asc');
-                }
-            })
-            ->when($request->year, function ($query, $year) {
-                $query->where('year', $year);
-            })
-            ->paginate(10)
-            ->withQueryString();
-
-        // return view("dashboard-team", compact('teams'));
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Data berhasil didapat.',
-            'data' => $teams
-        ], 200);
-    }
-
-    public function deleteTeam($team_id) {
+    public function update(Request $request, Team $team) {
         try {
-            $team = Team::findOrFail($team_id);
+            $currentYear = now()->year;
+            $validated = $request->validate([
+                'name' => [
+                    'required',
+                    'string',
+                    'max:255',
+                    Rule::unique('teams', 'name')->where(function ($query) use ($request) {
+                        return $query->where('year', $request->year);
+                    })->ignore($team->id),
+                ],
+                'year' => [
+                    'required',
+                    'integer',
+                    'min:2024',
+                    'max:' . $currentYear,
+                ],
+                'contributors' => 'required|array|min:1',
+                'contributors.*' => 'required|string|max:100',
+            ], [
+                'name.required' => 'Nama team wajib diisi.',
+                'name.unique' => 'Nama team sudah ada untuk tahun ini.',
+                'name.max' => 'Nama team maksimal 255 karakter.',
+                'year.required' => 'Tahun wajib diisi.',
+                'year.integer' => 'Tahun harus berupa angka.',
+                'year.min' => 'Tahun minimal 2024.',
+                'year.max' => 'Tahun maksimal ' . $currentYear . '.',
+                'contributors.required' => 'Minimal harus ada 1 contributor.',
+                'contributors.min' => 'Minimal harus ada 1 contributor.',
+                'contributors.*.required' => 'Nama contributor wajib diisi.',
+                'contributors.*.max' => 'Nama contributor maksimal 100 karakter.',
+            ]);
 
-            $contributors = $team->contributors()->get();
-            $showcases = $team->showcases()->get();
+            $result = DB::transaction(function () use ($validated, $team) {
+                // Update team data
+                $team->update([
+                    'name' => $validated["name"],
+                    'year' => $validated["year"],
+                ]);
 
-            DB::beginTransaction();
-
-
-            if ($contributors->count() > 0) {
+                // Delete existing contributors
                 $team->contributors()->delete();
+
+                // Create new contributors
+                $contributors = [];
+                foreach($validated["contributors"] as $name) {
+                    $contributor = Contributor::create([
+                        "name" => trim($name),
+                        "team_id" => $team->id
+                    ]);
+                    $contributors[] = $contributor;
+                }
+
+                return [
+                    'team' => $team->fresh(),
+                    'contributors' => $contributors
+                ];
+            });
+
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Team berhasil diperbarui!',
+                    'team' => $result['team'],
+                    'contributors' => $result['contributors']
+                ], 200);
             }
 
-            if ($showcases->count() > 0) {
-                foreach ($showcases as $showcase) {
+            return redirect()->route('dashboard.team.index')
+                            ->with('success', 'Team berhasil diperbarui!');
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Data yang dimasukkan tidak valid.',
+                    'errors' => $e->errors()
+                ], 422);
+            }
+        
+            return redirect()->back()
+                            ->withErrors($e->errors())
+                            ->withInput();
+                        
+        } catch (\Throwable $e) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Terjadi kesalahan sistem.',
+                    'error' => config('app.debug') ? $e->getMessage() : null
+                ], 500);
+            }
+        
+            return redirect()->back()
+                            ->with('error', 'Terjadi kesalahan sistem.')
+                            ->withInput();
+        }
+    }
+
+    public function show($id, Request $request)
+    {
+        try {
+            $team = Team::with('contributors', 'showcase')->findOrFail($id);
+
+            if ($request->ajax()) {
+                return response()->json([
+                    'success' => true,
+                    'data' => $team
+                ]);
+            }
+
+            return view('dashboard.team.show', compact('team'));
+
+        } catch (\Exception $e) {
+            if ($request->ajax()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Tim tidak ditemukan atau terjadi kesalahan'
+                ], 404);
+            }
+
+            return redirect()
+                ->route('dashboard.team.index')
+                ->with('error', 'Tim tidak ditemukan');
+        }
+    }
+
+    public function destroy(Team $team) {
+        try {
+            DB::transaction(function () use ($team) {
+                if ($team->contributors()->exists()) {
+                    $team->contributors()->delete();
+                }
+
+                $showcase = $team->showcase;
+                if ($showcase) {
                     if ($showcase->cover && Storage::disk('public')->exists($showcase->cover)) {
                         Storage::disk('public')->delete($showcase->cover);
                     }
+                    
+                    $showcase->delete();
                 }
-                
-                $team->showcases()->delete();
-            }
 
-            $teamData = $team->toArray();
-            $team->delete();
-
-            DB::commit();
+                $team->delete();
+            });
 
             return response()->json([
                 'success' => true,
-                'message' => 'Team dan semua data terkait berhasil dihapus.',
-                'deleted_data' => [
-                    'team' => $teamData,
-                    'contributors_count' => $contributors->count(),
-                    'showcases_count' => $showcases->count()
-                ]
+                'message' => 'Team dan semua data terkait berhasil dihapus!'
             ], 200);
 
-        } catch (\Exception $e) {
-            DB::rollBack();
-        
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Gagal menghapus team: ' . $e->getMessage(),
+                'message' => 'Team tidak ditemukan.'
+            ], 404);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan saat menghapus team.',
+                'error' => config('app.debug') ? $e->getMessage() : null
             ], 500);
         }
     }
-
-
 }

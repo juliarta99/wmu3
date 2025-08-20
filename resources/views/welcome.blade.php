@@ -251,7 +251,7 @@
             <h1 class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Showcase</h1>
             <p class="text-black text-sm md:text-base dark:text-light text-center mt-2">Explore hasil karya dari peserta Workshop Multimedia Udayana</p>
             <div class="my-10 max-w-2xl mx-auto">
-                <div class="relative w-full max-w-2xl aspect-video mx-auto rounded-lg md:rounded-xl overflow-hidden">
+                <div class="relative w-full max-w-full md:max-w-2xl aspect-video mx-auto rounded-lg md:rounded-xl overflow-hidden">
                     <iframe id="ytplayer" type="text/html" src="https://www.youtube.com/embed/M7lc1UVf-VE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" frameborder="0"></iframe>
                 </div>
                 <div class="grid grid-cols-3 gap-3 mt-5">

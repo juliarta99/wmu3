@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
-            $table->integer('no_team');
+            $table->string('name');
             $table->year('year');
             $table->timestamps();
 
-            $table->unique(['no_team', 'year']);
+            $table->unique(['name', 'year']);
         });
     }
 

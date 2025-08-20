@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     protected $fillable = [
-        'no_team',
+        'name',
         'year',
     ];
 
@@ -16,8 +16,8 @@ class Team extends Model
         return $this->hasMany(Contributor::class, 'team_id', 'id');
     }
 
-    public function showcases() 
+    public function showcase() 
     {
-        return $this->hasMany(Showcase::class, 'team_id', 'id');
+        return $this->hasOne(Showcase::class, 'team_id', 'id');
     }
 }
