@@ -58,7 +58,7 @@ class ShowcaseController extends Controller
                 break;
         }
         
-        $showcases = $query->paginate(10)->appends($request->query());
+        $showcases = $query->with('team')->paginate(10)->appends($request->query());
         return view('dashboard.showcase.index', compact('title', 'showcases'));
     }
 

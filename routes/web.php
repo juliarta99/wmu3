@@ -1,47 +1,41 @@
 <?php
 
-use App\Http\Controllers\HomeAdmin;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ShortLinkController;
 use App\Http\Controllers\ShowcaseController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    $title = "";
-    return view('welcome', compact('title'));
+Route::get('/', [GuestController::class, 'index'])->name('home');
+Route::get('/showcase', [GuestController::class, 'showcases'])->name('showcase.index');
+Route::get('/showcase/{showcase}', [GuestController::class, 'showcase'])->name('showcase.show');
+Route::get('/quiz', [GuestController::class, 'quiz'])->name('quiz.index');
+
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [AuthController::class, 'loginView'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 });
 
-Route::get('/showcase', function () {
-    $title = "Showcase - ";
-    return view('showcase.index', compact('title'));
-})->name('showcase.index');
-
-Route::get('/showcase/detail', function () {
-    $title = "Detail Showcase - ";
-    return view('showcase.show', compact('title'));
-})->name('showcase.show');
-
-Route::get('/quiz', function () {
-    $title = "Quiz - ";
-    return view('quiz', compact('title'));
-})->name('quiz');
-
-
-Route::prefix('dashboard')->name('dashboard.')->group(function () {
-    Route::get('/', function () {
-        $title = "Dashboard - ";
-        return view('dashboard.index', compact('title'));
-    })->name('index');
-
-    Route::resource('team', TeamController::class);
-    Route::resource('showcase', ShowcaseController::class);
-    Route::resource('shortener', ShortLinkController::class)->parameters(['shortener' => 'short_link']);;
+Route::middleware(['auth'])->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    
+    Route::prefix('dashboard')->name('dashboard.')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('index');
+    
+        Route::resource('team', TeamController::class);
+        Route::resource('showcase', ShowcaseController::class);
+        Route::resource('shortener', ShortLinkController::class)->parameters(['shortener' => 'short_link']);;
+    });
 });
+
+
 
 //test websoket
 Route::get('/homeadmin', function () {
-        broadcastParseValue();
-        return view('websoket'); 
-    });
+    broadcastParseValue();
+    return view('websoket'); 
+});
 
-Route::get('/test-broadcast', [HomeAdmin::class, 'updateData']);
+Route::get('/{back_half}', [ShortLinkController::class, 'visitShortLink']);

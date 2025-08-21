@@ -4,6 +4,7 @@ use App\Models\Visitor;
 use App\Models\Showcase;
 use App\Models\ShortLink;
 use App\Events\HomeAdminEvent;
+use App\Models\Team;
 use Illuminate\Support\Facades\Storage;
 
 function fileUpload($file, $folder) {
@@ -30,11 +31,11 @@ function broadcastParseValue() {
     $data = [
         'webvisitorcount' => $webVisitor->count_visitor ?? 0,
         'regiscount' => $regisLink->count_visitors ?? 0,
+        'teamcount' => Team::count(),
         'showcasecount' => Showcase::count(),
         'linkshortenercount' => ShortLink::count()
     ];
-
-    // broadcast(new HomeAdminEvent($data))->toOthers();
+    
     $event = new HomeAdminEvent($data);
     broadcast($event);
     

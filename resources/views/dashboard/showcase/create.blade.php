@@ -13,19 +13,19 @@
     <form id="showcase-form" action="{{ route('dashboard.showcase.store') }}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-4 mt-6">
         @csrf
         <div class="flex flex-col gap-2">
-            <h2 class="text-lg font-semibold">Detail Karya</h2>
+            <h2 class="text-base md:text-lg font-semibold">Detail Karya</h2>
             
             <!-- Title Field -->
             <div class="flex flex-col gap-1">
                 <div class="flex gap-1 items-center">
-                    <label for="title" class="font-semibold">Judul</label>
+                    <label for="title" class="font-semibold text-sm md:text-base">Judul</label>
                     <span class="text-red-500">*</span>
                 </div>
                 <input 
                     type="text" 
                     id="title" 
                     name="title" 
-                    class="border border-gray-300 px-4 py-2 rounded-lg @error('title') border-red-500 @enderror" 
+                    class="border border-gray-300 px-4 py-2 text-sm md:text-base rounded-lg @error('title') border-red-500 @enderror" 
                     placeholder="Masukkan judul karya"
                     value="{{ old('title') }}"
                     
@@ -38,7 +38,7 @@
             <!-- Cover Field -->
             <div class="flex flex-col gap-1">
                 <div class="flex gap-1 items-center">
-                    <label for="cover" class="font-semibold">Sampul</label>
+                    <label for="cover" class="font-semibold text-sm md:text-base">Sampul</label>
                     <span class="text-red-500">*</span>
                 </div>
                 <div class="h-27 w-48 max-w-full rounded-md border border-gray-300 bg-gray-100 flex items-center justify-center overflow-hidden">
@@ -70,10 +70,10 @@
             <!-- Team Field -->
             <div class="flex flex-col gap-1">
                 <div class="flex gap-1 items-center">
-                    <label for="team_id" class="font-semibold">Team</label>
+                    <label for="team_id" class="font-semibold text-sm md:text-base">Team</label>
                     <span class="text-red-500">*</span>
                 </div>
-                <select name="team_id" id="team_id" class="border border-gray-300 px-4 py-2 rounded-lg @error('team_id') border-red-500 @enderror" >
+                <select name="team_id" id="team_id" class="border border-gray-300 px-4 py-2 text-sm md:text-base rounded-lg @error('team_id') border-red-500 @enderror" >
                     <option value="">Pilih team</option>
                     @foreach ($teams as $team)
                         <option value="{{ $team->id }}" {{ old('team_id') == $team->id ? 'selected' : '' }}>{{ $team->name }} - {{ $team->year }}</option>
@@ -87,14 +87,14 @@
             <!-- Champion Field -->
             <div class="flex flex-col gap-1">
                 <div class="flex gap-1 items-center">
-                    <label for="champion" class="font-semibold">Juara</label>
+                    <label for="champion" class="font-semibold text-sm md:text-base">Juara</label>
                     <span class="text-red-500">*</span>
                 </div>
-                <div class="flex flex-wrap items-center gap-4">
+                <div class="flex flex-wrap items-center gap-5 md:gap-4">
                     <div class="flex items-center gap-2">
                         <input type="radio" name="champion" class="cursor-pointer" id="champion_first" value="1" {{ old('champion') == '1' ? 'checked' : '' }} >
                         <label for="champion_first" class="cursor-pointer">
-                            <svg class="size-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="md:size-8 size-6" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.2723 1.06044C17.0023 1.30044 14.9023 5.46794 14.9023 5.46794L13.3398 11.7704L19.4198 11.2129C19.4198 11.2129 24.4773 1.80794 24.5798 1.59044C24.7623 1.19544 24.8598 1.03294 24.1623 1.03294C23.4648 1.03044 17.5248 0.835444 17.2723 1.06044Z" fill="#176CC7"/>
                                 <path d="M20.42 10.8227C20.1175 10.6602 11.2075 10.5202 10.9975 10.8227C10.8075 11.0977 10.835 12.3552 10.9275 12.5177C11.02 12.6802 14.015 14.0727 14.015 14.0727L14.0125 14.5802C14.0125 14.5802 14.1775 14.9777 15.8475 14.9777C17.5175 14.9777 17.69 14.6402 17.69 14.6402L17.705 14.1277C17.705 14.1277 20.3275 12.8177 20.465 12.7027C20.605 12.5852 20.7225 10.9852 20.42 10.8227ZM17.675 12.9052C17.675 12.9052 17.6675 12.5552 17.495 12.4677C17.3225 12.3802 14.545 12.3952 14.31 12.4077C14.075 12.4202 14.075 12.8402 14.075 12.8402L12.175 11.9152V11.7302L19.25 11.7802L19.2625 11.9902L17.675 12.9052Z" fill="#FCC417"/>
                                 <path d="M14.8148 12.793C14.5798 12.793 14.4448 13.038 14.4448 13.4605C14.4448 13.8555 14.5798 14.188 14.8773 14.163C15.1223 14.143 15.2073 13.768 15.1848 13.4355C15.1623 13.0405 15.1123 12.793 14.8148 12.793Z" fill="#FDFFFF"/>
@@ -109,7 +109,7 @@
                     <div class="flex items-center gap-2">
                         <input type="radio" name="champion" class="cursor-pointer" id="champion_runner_up" value="2" {{ old('champion') == '2' ? 'checked' : '' }} >
                         <label for="champion_runner_up" class="cursor-pointer">
-                            <svg class="size-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="md:size-8 size-6" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.2723 1.06044C17.0023 1.30044 14.9023 5.46794 14.9023 5.46794L13.3398 11.7704L19.4198 11.2129C19.4198 11.2129 24.4773 1.80794 24.5798 1.59044C24.7623 1.19544 24.8598 1.03294 24.1623 1.03294C23.4648 1.03044 17.5248 0.835444 17.2723 1.06044Z" fill="#176CC7"/>
                                 <path d="M20.4202 10.8227C20.1177 10.6602 11.2077 10.5202 10.9977 10.8227C10.8077 11.0977 10.9152 12.5402 10.9877 12.7127C11.1177 13.0127 13.9952 14.3202 13.9952 14.3202L13.9402 14.9152C13.9402 14.9152 14.1752 14.9752 15.8477 14.9752C17.5202 14.9752 17.8502 14.8902 17.8502 14.8902L17.8552 14.3527C17.8552 14.3527 20.4452 13.0927 20.5752 12.9177C20.6852 12.7727 20.7227 10.9852 20.4202 10.8227ZM17.7677 13.1027C17.7677 13.1027 17.8502 12.7352 17.6777 12.6502C17.5052 12.5627 14.5452 12.6027 14.3102 12.6152C14.0752 12.6277 14.0752 13.0477 14.0752 13.0477L12.1752 11.9152V11.7302L19.2502 11.7802L19.2627 11.9902L17.7677 13.1027Z" fill="#CECDD2"/>
                                 <path d="M14.8148 12.793C14.5798 12.793 14.4448 13.038 14.4448 13.4605C14.4448 13.8555 14.5798 14.188 14.8773 14.163C15.1223 14.143 15.2073 13.768 15.1848 13.4355C15.1623 13.0405 15.1123 12.793 14.8148 12.793Z" fill="#FDFFFF"/>
@@ -124,7 +124,7 @@
                     <div class="flex items-center gap-2">
                         <input type="radio" name="champion" class="cursor-pointer" id="champion_third" value="3" {{ old('champion') == '3' ? 'checked' : '' }} >
                         <label for="champion_third" class="cursor-pointer">
-                            <svg class="size-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="md:size-8 size-6" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.2723 1.06044C17.0023 1.30044 14.9023 5.46794 14.9023 5.46794L13.3398 11.7704L19.4198 11.2129C19.4198 11.2129 24.4773 1.80794 24.5798 1.59044C24.7623 1.19544 24.8598 1.03294 24.1623 1.03294C23.4648 1.03044 17.5248 0.835444 17.2723 1.06044Z" fill="#176CC7"/>
                                 <path d="M20.4202 10.8227C20.1177 10.6602 11.2077 10.5202 10.9977 10.8227C10.8077 11.0977 10.9152 12.5402 10.9877 12.7127C11.1177 13.0127 13.9952 14.3202 13.9952 14.3202L13.9402 14.9152C13.9402 14.9152 14.1752 14.9752 15.8477 14.9752C17.5202 14.9752 17.8502 14.8902 17.8502 14.8902L17.8552 14.3527C17.8552 14.3527 20.4452 13.0927 20.5752 12.9177C20.6852 12.7727 20.7227 10.9852 20.4202 10.8227ZM17.7677 13.1027C17.7677 13.1027 17.8502 12.7352 17.6777 12.6502C17.5052 12.5627 14.5452 12.6027 14.3102 12.6152C14.0752 12.6277 14.0752 13.0477 14.0752 13.0477L12.2102 12.0877L12.1752 11.7302L19.2502 11.7802L19.2252 12.1177L17.7677 13.1027Z" fill="#F79429"/>
                                 <path d="M14.8148 12.9727C14.5798 12.9727 14.4448 13.2177 14.4448 13.6402C14.4448 14.0352 14.5798 14.3677 14.8773 14.3427C15.1223 14.3227 15.2073 13.9477 15.1848 13.6152C15.1623 13.2177 15.1123 12.9727 14.8148 12.9727Z" fill="#FDFFFF"/>
@@ -139,7 +139,7 @@
                     <div class="flex items-center gap-2">
                         <input type="radio" name="champion" class="cursor-pointer" id="champion_not" value="0" {{ old('champion') == '0' ? 'checked' : '' }} >
                         <label for="champion_not" class="cursor-pointer">
-                            <svg class="size-8" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="md:size-8 size-6" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16.0595 7.05898C16.6454 6.47305 16.6454 5.52148 16.0595 4.93555C15.4735 4.34961 14.522 4.34961 13.936 4.93555L9.0001 9.87617L4.05947 4.94023C3.47354 4.3543 2.52197 4.3543 1.93604 4.94023C1.3501 5.52617 1.3501 6.47773 1.93604 7.06367L6.87666 11.9996L1.94072 16.9402C1.35479 17.5262 1.35479 18.4777 1.94072 19.0637C2.52666 19.6496 3.47822 19.6496 4.06416 19.0637L9.0001 14.123L13.9407 19.059C14.5267 19.6449 15.4782 19.6449 16.0642 19.059C16.6501 18.473 16.6501 17.5215 16.0642 16.9355L11.1235 11.9996L16.0595 7.05898Z" fill="#EB5757"/>
                             </svg>
                         </label>
@@ -153,12 +153,12 @@
             <!-- Description Field -->
             <div class="flex flex-col gap-1">
                 <div class="flex gap-1 items-center">
-                    <label for="description" class="font-semibold">Deskripsi</label>
+                    <label for="description" class="font-semibold text-sm md:text-base">Deskripsi</label>
                     <span class="text-red-500">*</span>
                 </div>
                 <textarea 
                     name="description" 
-                    class="border border-gray-300 px-4 py-2 rounded-lg @error('description') border-red-500 @enderror" 
+                    class="border border-gray-300 px-4 py-2 text-sm md:text-base rounded-lg @error('description') border-red-500 @enderror" 
                     id="description" 
                     rows="5" 
                     placeholder="Masukkan deskripsi"
@@ -172,14 +172,14 @@
             <!-- YouTube Link Field -->
             <div class="flex flex-col gap-1">
                 <div class="flex gap-1 items-center">
-                    <label for="link_youtube" class="font-semibold">Link YouTube</label>
+                    <label for="link_youtube" class="font-semibold text-sm md:text-base">Link YouTube</label>
                     <span class="text-red-500">*</span>
                 </div>
                 <input 
                     type="url" 
                     id="link_youtube" 
                     name="link_youtube" 
-                    class="border border-gray-300 px-4 py-2 rounded-lg @error('link_youtube') border-red-500 @enderror" 
+                    class="border border-gray-300 px-4 py-2 text-sm md:text-base rounded-lg @error('link_youtube') border-red-500 @enderror" 
                     placeholder="Masukkan link YouTube"
                     value="{{ old('link_youtube') }}"
                     

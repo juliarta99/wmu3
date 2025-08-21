@@ -168,7 +168,6 @@ class ShortLinkController extends Controller
                                 ->withInput();
             }
 
-            // Buat shortlink baru
             $shortLink = ShortLink::create([
                 'name' => $validated['name'],
                 'back_half' => $validated['back_half'],
@@ -176,7 +175,7 @@ class ShortLinkController extends Controller
                 'open_at' => $validated['open_at'],
                 'end_at' => $validated['end_at'],
                 'count_visitors' => 0,
-                'created_by' => 1
+                'created_by' => Auth::user()->id
             ]);
 
             $successMessage = 'Link Shortener berhasil ditambahkan!';

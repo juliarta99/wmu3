@@ -28,11 +28,11 @@
             <div class="order-2 sm:order-3 md:order-2">
                 <h1 class="text-base md:text-lg font-semibold text-black dark:text-light">Quick Links</h1>
                 <div class="flex flex-col gap-2 mt-3">
-                    <a href="" class="text-sm md:text-base text-black dark:text-light hover:text-seven transition duration-300">Home</a>
-                    <a href="" class="text-sm md:text-base text-black dark:text-light hover:text-seven transition duration-300">About</a>
-                    <a href="" class="text-sm md:text-base text-black dark:text-light hover:text-seven transition duration-300">Showcase</a>
-                    <a href="" class="text-sm md:text-base text-black dark:text-light hover:text-seven transition duration-300">FAQ</a>
-                    <a href="" class="text-sm md:text-base text-black dark:text-light hover:text-seven transition duration-300">Contact</a>
+                    <a href="{{ route('home') }}" class="text-sm md:text-base text-black dark:text-light hover:text-seven transition duration-300">Home</a>
+                    <a href="/#about" class="text-sm md:text-base text-black dark:text-light hover:text-seven transition duration-300">About</a>
+                    <a href="{{ route('showcase.index') }}" class="text-sm md:text-base text-black dark:text-light hover:text-seven transition duration-300">Showcase</a>
+                    <a href="/#faq" class="text-sm md:text-base text-black dark:text-light hover:text-seven transition duration-300">FAQ</a>
+                    <a href="/#cp" class="text-sm md:text-base text-black dark:text-light hover:text-seven transition duration-300">Contact</a>
                 </div>
             </div>
             <div class="order-4 sm:order-2 md:order-3 flex flex-col justify-center">
@@ -51,8 +51,8 @@
             </div>
             <div class="order-3 sm:order-4">
                 <h1 class="text-base md:text-lg font-semibold text-black dark:text-light text-start sm:text-end md:text-start">Join Us</h1>
-                <img src="{{ asset('assets/images/join_us/b.png') }}" alt="QR" class="dark:hidden ml-0 sm:ml-auto md:ml-0 block max-w-full max-h-30 mt-5">
-                <img src="{{ asset('assets/images/join_us/w.png') }}" alt="QR" class="hidden ml-0 sm:ml-auto md:ml-0 dark:block max-w-full max-h-30 mt-5">
+                <div id="qrcode-black" class="dark:hidden ml-0 sm:ml-auto md:ml-0 flex justify-start sm:justify-end md:justify-start mt-3"></div>
+                <div id="qrcode-white" class="ml-0 sm:ml-auto md:ml-0 hidden justify-start sm:justify-end md:justify-start dark:flex mt-3"></div>
             </div>
         </div>
         <div class="py-10">

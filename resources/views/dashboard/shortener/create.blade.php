@@ -15,14 +15,14 @@
         <div class="flex flex-col gap-2">
             <div class="flex flex-col gap-1">
                 <div class="flex gap-1 items-center">
-                    <label for="name" class="font-semibold">Nama</label>
+                    <label for="name" class="font-semibold text-sm md:text-base">Nama</label>
                     <span class="text-red-500">*</span>
                 </div>
                 <input 
                     type="text" 
                     id="name" 
                     name="name" 
-                    class="border border-gray-300 px-4 py-2 rounded-lg @error('name') border-red-500 @enderror" 
+                    class="border border-gray-300 px-4 py-2 text-sm md:text-base rounded-lg @error('name') border-red-500 @enderror" 
                     placeholder="Masukkan nama link"
                     value="{{ old('name') }}"
                 >
@@ -32,14 +32,14 @@
             </div>
             <div class="flex flex-col gap-1">
                 <div class="flex gap-1 items-center">
-                    <label for="back_half" class="font-semibold">Akhiran Link</label>
+                    <label for="back_half" class="font-semibold text-sm md:text-base">Akhiran Link</label>
                     <span class="text-red-500">*</span>
                 </div>
                 <input 
                     type="text" 
                     id="back_half" 
                     name="back_half" 
-                    class="border border-gray-300 px-4 py-2 rounded-lg @error('back_half') border-red-500 @enderror" 
+                    class="border border-gray-300 px-4 py-2 text-sm md:text-base rounded-lg @error('back_half') border-red-500 @enderror" 
                     placeholder="Masukkan akhiran link"
                     value="{{ old('back_half') }}"
                 >
@@ -49,14 +49,14 @@
             </div>
             <div class="flex flex-col gap-1">
                 <div class="flex gap-1 items-center">
-                    <label for="link" class="font-semibold">Link Tujuan</label>
+                    <label for="link" class="font-semibold text-sm md:text-base">Link Tujuan</label>
                     <span class="text-red-500">*</span>
                 </div>
                 <input 
                     type="text" 
                     id="link" 
                     name="link" 
-                    class="border border-gray-300 px-4 py-2 rounded-lg @error('link') border-red-500 @enderror" 
+                    class="border border-gray-300 px-4 py-2 text-sm md:text-base rounded-lg @error('link') border-red-500 @enderror" 
                     placeholder="Masukkan link tujuan"
                     value="{{ old('link') }}"
                 >
@@ -67,14 +67,14 @@
             <div class="flex md:justify-between flex-col md:flex-row gap-2 md:gap-4 items-center">
                 <div class="flex flex-col gap-1 w-full">
                     <div class="flex gap-1 items-center">
-                        <label for="open_at" class="font-semibold">Waktu Mulai</label>
+                        <label for="open_at" class="font-semibold text-sm md:text-base">Waktu Mulai</label>
                         <span class="text-red-500">*</span>
                     </div>
                     <input 
                         type="datetime-local" 
                         id="open_at" 
                         name="open_at" 
-                        class="border border-gray-300 px-4 py-2 rounded-lg @error('open_at') border-red-500 @enderror" 
+                        class="border border-gray-300 px-4 py-2 text-sm md:text-base rounded-lg @error('open_at') border-red-500 @enderror" 
                         value="{{ old('open_at') }}"
                     >
                     @error('open_at')
@@ -83,14 +83,14 @@
                 </div>
                 <div class="flex flex-col gap-1 w-full">
                     <div class="flex gap-1 items-center">
-                        <label for="end_at" class="font-semibold">Waktu Berakhir</label>
+                        <label for="end_at" class="font-semibold text-sm md:text-base">Waktu Berakhir</label>
                         <span class="text-red-500">*</span>
                     </div>
                     <input 
                         type="datetime-local" 
                         id="end_at" 
                         name="end_at" 
-                        class="border border-gray-300 px-4 py-2 rounded-lg @error('end_at') border-red-500 @enderror" 
+                        class="border border-gray-300 px-4 py-2 text-sm md:text-base rounded-lg @error('end_at') border-red-500 @enderror" 
                         value="{{ old('end_at') }}"
                     >
                     @error('end_at')
@@ -99,7 +99,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex gap-4 items-center">
+        <div class="flex flex-col md:flex-row gap-2 md:gap-4 items-center">
             <button 
                 type="button" 
                 id="cancel-btn"

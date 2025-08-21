@@ -5,7 +5,7 @@
             <h1 class="text-black dark:text-light font-medium text-xs lg:text-base">Workshop Multimedia <br>Udayana</h1>
         </a>
         <div class="md:flex gap-8 items-center hidden">
-            <a href="/" class="text-black text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">Home</a>
+            <a href="{{ route('home') }}" class="text-black text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">Home</a>
             <a href="/#about" class="text-black text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">About</a>
             <a href="{{ route('showcase.index') }}" class="text-black text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">Showcase</a>
             <a href="/#faq" class="text-black text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">FAQ</a>

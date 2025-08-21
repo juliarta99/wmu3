@@ -2,59 +2,98 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function login(Request $request) {
-        $credentials = $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ]);
-
-        $remember = $request->has('remember');
-
-        if (Auth::attempt($credentials, $remember)) {
-            $data = User::where('username', $credentials['username'])->first();
-            if ($data->role) {
-                $request->session()->regenerate();
-                return redirect()->intended('admin');
-                // return response()->json([
-                //     "status" => "Berhasil"
-                // ],200);
-            }
-        }
-
-        return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
-        ])->onlyInput('username');
+    public function loginView() {
+        return view('login');
     }
 
-    public function makeAdmin(Request $request) {
+    public function login(Request $request) {
         try {
             $validated = $request->validate([
-                'username' => 'required|unique:users,username',
+                'username' => 'required',
                 'password' => 'required',
+                'remember' => 'nullable|boolean',
+            ], [
+                'username.required' => 'Username wajib diisi.',
+                'password.required' => 'Password wajib diisi.',
             ]);
-    
-            $admin = [
-                'email' => $validated['email'],
-                'password' => Hash::make($validated['password'])
+
+            $credentials = [
+                'username' => $validated['username'],
+                'password' => $validated['password']
             ];
-    
-    
-            return response()->json([
-                "dataAdmin" => $admin
-            ], 201);
+
+            $remember = $validated['remember'] ?? false;
+
+            if (Auth::attempt($credentials, $remember)) {
+                $request->session()->regenerate();
+                
+                $user = Auth::user();
+                
+                if ($request->expectsJson()) {
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'Login berhasil!',
+                        'user' => $user
+                    ], 200);
+                }
+
+                return redirect()->intended(route('dashboard.index'))
+                            ->with('success', 'Login berhasil!');
+            }
+
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Username atau password salah.',
+                    'errors' => [
+                        'username' => ['Username atau password salah.']
+                    ]
+                ], 422);
+            }
+
+            return redirect()->back()
+                            ->withErrors(['username' => 'Username atau password salah.'])
+                            ->withInput($request->except('password'));
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Data yang dimasukkan tidak valid.',
+                    'errors' => $e->errors()
+                ], 422);
+            }
+        
+            return redirect()->back()
+                            ->withErrors($e->errors())
+                            ->withInput($request->except('password'));
+                        
         } catch (\Throwable $e) {
-            return response()->json([
-                "status" => "gagal",
-                "msg" => $e->getMessage()
-            ], 400);
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Terjadi kesalahan sistem.',
+                    'error' => config('app.debug') ? $e->getMessage() : null
+                ], 500);
+            }
+        
+            return redirect()->back()
+                            ->with('error', 'Terjadi kesalahan sistem.')
+                            ->withInput($request->except('password'));
         }
     }
 
+    public function logout(Request $request) {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect(route('login'));
+    }
 }
