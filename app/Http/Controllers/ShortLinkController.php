@@ -228,18 +228,15 @@ class ShortLinkController extends Controller
     {
         $link = ShortLink::where('back_half', $back_half)->firstOrFail();
 
-        $now = now();
-
-        if ($link->open_at && $now->lt($link->open_at)) {
-            return response()->view('shortlink.not_open', ['link' => $link], 403);
+        if ($link->is_not_started) {
+            return response()->view('errors.shortlink.not_open', ['link' => $link], 403);
         }
 
-        if ($link->end_at && $now->gt($link->end_at)) {
-            return response()->view('shortlink.expired', ['link' => $link], 410);
+        if ($link->is_expired) {
+            return response()->view('errors.shortlink.expired', ['link' => $link], 410);
         }
 
         $isGuest = Auth::check();
-
         if (!$isGuest) {
             $link->increment('count_visitors');
 
@@ -257,7 +254,10 @@ class ShortLinkController extends Controller
             $validated = $request->validate([
                 'name' => 'required|string|max:255',
                 'back_half' => [
-                    'required',
+                    Rule::requiredIf(function () use ($short_link) {
+                        $excluded = ['register', 'pre-test', 'post-test'];
+                        return !in_array($short_link->back_half, $excluded);
+                    }),
                     'string',
                     'max:100',
                     'regex:/^[a-zA-Z0-9_-]+$/',
@@ -271,7 +271,7 @@ class ShortLinkController extends Controller
                 'name.string' => 'Nama shortener harus berupa teks.',
                 'name.max' => 'Nama shortener maksimal 255 karakter.',
 
-                'back_half.required' => 'Akhiran link wajib diisi.',
+                'back_half.required_unless' => 'Akhiran link wajib diisi.',
                 'back_half.string' => 'Akhiran link harus berupa teks.',
                 'back_half.max' => 'Akhiran link maksimal 100 karakter.',
                 'back_half.regex' => 'Akhiran link hanya boleh mengandung huruf, angka, underscore, dan strip.',

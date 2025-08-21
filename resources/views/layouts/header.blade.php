@@ -7,7 +7,9 @@
         <div class="md:flex gap-8 items-center hidden">
             <a href="{{ route('home') }}" class="text-black text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">Home</a>
             <a href="/#about" class="text-black text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">About</a>
-            <a href="{{ route('showcase.index') }}" class="text-black text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">Showcase</a>
+            @if ($routeTarget != 'showcase')
+                <a href="{{ route('showcase.index') }}" class="text-black text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">Showcase</a>
+            @endif
             <a href="/#faq" class="text-black text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">FAQ</a>
             <a href="/#cp" class="text-black text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">Contact</a>
         </div>
@@ -23,9 +25,15 @@
                     d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z" />
                 </svg>
                 </button>
-            <a href="" class="md:block hidden">
+            <a href="/{{ $routeTarget }}" class="md:block hidden">
                 <button class="py-3 px-5 lg:text-base text-sm rounded-md bg-main-gradient cursor-pointer text-light">
-                    Register
+                    @if ($routeTarget == 'register')
+                        Register
+                    @elseif ($routeTarget == 'quiz')
+                        Quiz
+                    @else
+                        Showcase
+                    @endif
                 </button>
             </a>
             <div id="humberger" class="cursor-pointer md:hidden flex flex-col gap-1">
@@ -36,15 +44,23 @@
         </div>
     </nav>
     <div id="nav-mobile" class="w-full fixed top-0 -translate-y-[100%] left-0 bg-light dark:bg-one px-4 py-10 shadow-2xl block md:hidden z-0 transition-all duration-300">
-        <div class="flex flex-col gap-4 pt-14 >
+        <div class="flex flex-col gap-4 pt-14">
             <a href="/" class="text-black w-max text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">Home</a>
             <a href="/#about" class="text-black w-max text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">About</a>
-            <a href="{{ route('showcase.index') }}" class="text-black w-max text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">Showcase</a>
+            @if ($routeTarget != 'showcase')
+                <a href="{{ route('showcase.index') }}" class="text-black w-max text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">Showcase</a>
+            @endif
             <a href="/#faq" class="text-black w-max text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">FAQ</a>
             <a href="/#cp" class="text-black w-max text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">Contact</a>
-            <a href="" class="w-max">
+            <a href="/{{ $routeTarget }}" class="w-max max-w-full">
                 <button class="py-3 px-5 lg:text-base text-sm rounded-md bg-main-gradient cursor-pointer text-light">
-                    Register
+                    @if ($routeTarget == 'register')
+                        Register
+                    @elseif ($routeTarget == 'quiz')
+                        Quiz
+                    @else
+                        Showcase
+                    @endif
                 </button>
             </a>
         </div>

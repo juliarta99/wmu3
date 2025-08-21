@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ShortLink;
 use App\Models\Showcase;
 use App\Models\Visitor;
 use Carbon\Carbon;
@@ -10,9 +11,27 @@ use Illuminate\Support\Facades\Auth;
 
 class GuestController extends Controller
 {
+    protected function isLinkAccessible($type) {
+        $link = ShortLink::where('back_half', $type)->first() ?? null;
+
+        if (!$link) {
+            return false;
+        }
+
+        return $link->is_accessible;
+    }
+
     public function index() {
         $year = now()->year;
         $visitor = Visitor::where('year', $year)->first();
+
+        $routeTarget = "showcase";
+        if ($this->isLinkAccessible('register')) {
+            $routeTarget = 'register';
+        } elseif ($this->isLinkAccessible('pre-test') || $this->isLinkAccessible('post-test')) {
+            $routeTarget = 'quiz';
+        }
+
         if(!$visitor) {
             Visitor::create([
                 'year' => $year,
@@ -39,8 +58,40 @@ class GuestController extends Controller
                 'logo' => asset('assets/images/sponsors/main/bca.webp'),
                 'name' => 'BCA'
             ],
+            [
+                'logo' => asset('assets/images/sponsors/main/bca.webp'),
+                'name' => 'BCA'
+            ],
+            [
+                'logo' => asset('assets/images/sponsors/main/bca.webp'),
+                'name' => 'BCA'
+            ],
         ];
         $supportSponsors = [
+            [
+                'logo' => asset('assets/images/sponsors/support/bni.webp'),
+                'name' => 'BNI'
+            ],
+            [
+                'logo' => asset('assets/images/sponsors/support/bni.webp'),
+                'name' => 'BNI'
+            ],
+            [
+                'logo' => asset('assets/images/sponsors/support/bni.webp'),
+                'name' => 'BNI'
+            ],
+            [
+                'logo' => asset('assets/images/sponsors/support/bni.webp'),
+                'name' => 'BNI'
+            ],
+            [
+                'logo' => asset('assets/images/sponsors/support/bni.webp'),
+                'name' => 'BNI'
+            ],
+            [
+                'logo' => asset('assets/images/sponsors/support/bni.webp'),
+                'name' => 'BNI'
+            ],
             [
                 'logo' => asset('assets/images/sponsors/support/bni.webp'),
                 'name' => 'BNI'
@@ -141,11 +192,19 @@ class GuestController extends Controller
             ],
         ];
 
-        return view('welcome', compact('title', 'mainSponsors', 'supportSponsors', 'showcases', 'faqs', 'timelines', 'contactPersons'));
+        return view('welcome', compact('title', 'routeTarget', 'mainSponsors', 'supportSponsors', 'showcases', 'faqs', 'timelines', 'contactPersons'));
     }
 
     public function showcases(Request $request) {
         $title = "Showcase - ";
+
+        $routeTarget = "showcase";
+        if ($this->isLinkAccessible('register')) {
+            $routeTarget = 'register';
+        } elseif ($this->isLinkAccessible('pre-test') || $this->isLinkAccessible('post-test')) {
+            $routeTarget = 'quiz';
+        }
+
         $year = Carbon::now()->year;
         $showcaseAvailable = Showcase::whereHas('team', function ($t) use ($year) {
                         $t->where('year', $year);
@@ -173,17 +232,40 @@ class GuestController extends Controller
                     ->paginate(2)
                     ->appends($request->query());
         
-        return view('showcase.index', compact('title', 'showcases'));
+        return view('showcase.index', compact('title', 'routeTarget', 'showcases'));
     }
 
     public function showcase(Showcase $showcase) {
         $showcase->load('team', 'team.contributors');
         $title = "Detail Showcase - ";
-        return view('showcase.show', compact('title', 'showcase'));
+
+        $routeTarget = "showcase";
+        if ($this->isLinkAccessible('register')) {
+            $routeTarget = 'register';
+        } elseif ($this->isLinkAccessible('pre-test') || $this->isLinkAccessible('post-test')) {
+            $routeTarget = 'quiz';
+        }
+
+        return view('showcase.show', compact('title', 'routeTarget', 'showcase'));
     }
 
     public function quiz() {
         $title = "Quiz - ";
-        return view('quiz', compact('title'));
+
+        $routeTarget = "showcase";
+        if ($this->isLinkAccessible('register')) {
+            $routeTarget = 'register';
+        } elseif ($this->isLinkAccessible('pre-test') || $this->isLinkAccessible('post-test')) {
+            $routeTarget = 'quiz';
+        }
+
+        $postTestLink = ShortLink::where("back_half", "post-test")->first();
+        $preTestLink = ShortLink::where("back_half", "pre-test")->first();
+
+        if($postTestLink->is_expired || $postTestLink->is_not_started || $preTestLink->is_not_started || $preTestLink->is_expired) {
+            abort(404);
+        }
+
+        return view('quiz', compact('title', 'routeTarget', 'postTestLink', 'preTestLink'));
     }
 }

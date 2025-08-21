@@ -3,16 +3,24 @@
 @section('content')
     <section>
         <div class="pb-24 pt-48 min-h-screen flex flex-col items-center justify-center gap-5">
-            <div class="container px-3 mx-auto flex flex-col items-center justify-center gap-10">
+            <div class="container relative z-1 px-3 mx-auto flex flex-col items-center justify-center gap-10">
                 <div class="flex flex-col items-center justify-center gap-3 max-w-3xl">
-                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-black dark:text-light text-center"><span class="bg-main-gradient bg-clip-text text-transparent">WORKSHOP</span>  MULTIMEDIA<br>UDAYANA <span class="bg-main-gradient bg-clip-text text-transparent">#3</span></h1>
-                    <p class="text-sm md:text-base text-center text-black dark:text-light">Setiap momen yang kita rekam hari ini adalah investasi untuk dikenang di masa depan. Dengan mendokumentasikannya, kita tidak hanya menyimpan gambar atau video, tetapi juga cerita dan perasaan yang akan tetap hidup di dalamnya</p>
+                    <h1 data-aos-duration="500" data-aos="zoom-in" class="text-2xl sm:text-3xl lg:text-4xl font-bold text-black dark:text-light text-center"><span class="bg-main-gradient bg-clip-text text-transparent">WORKSHOP</span>  MULTIMEDIA<br>UDAYANA <span class="bg-main-gradient bg-clip-text text-transparent">#3</span></h1>
+                    <p data-aos-duration="500" data-aos="zoom-in" data-aos-delay="400" class="text-sm md:text-base text-center text-black dark:text-light">Setiap momen yang kita rekam hari ini adalah investasi untuk dikenang di masa depan. Dengan mendokumentasikannya, kita tidak hanya menyimpan gambar atau video, tetapi juga cerita dan perasaan yang akan tetap hidup di dalamnya</p>
                 </div>
-                <button class="py-3 text-sm md:text-base px-5 rounded-full bg-main-gradient cursor-pointer text-light">
-                    Register Now
-                </button>
+                <a href="/{{ $routeTarget }}" target="_blank" data-aos-duration="500" data-aos="fade-up" data-aos-delay="600">
+                    <button class="py-3 text-sm md:text-base px-5 rounded-full bg-main-gradient cursor-pointer text-light">
+                        @if ($routeTarget == 'register')
+                            Register Now
+                        @elseif ($routeTarget == 'quiz')
+                            Quiz Now
+                        @else
+                            See Showcase
+                        @endif
+                    </button>
+                </a>
             </div>
-            <div class="mt-10 w-full relative">
+            <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="1000" class="mt-10 w-full relative">
                 <div class="swiper swiper-3">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -58,19 +66,19 @@
         </div>
     </section>
 
-    <section class="py-10 md:py-24">
+    <section class="py-10 md:py-24 scroll-mt-24" id="about">
         <div class="container px-3 mx-auto">
-            <h5 class="text-seven text-center text-sm md:text-base scroll-mt-24" id="about">Get to Know Us</h5>
-            <h1 class="text-xl sm:text-2xl md:text-3xl text-black dark:text-light text-center font-bold">About</h1>
+            <h5 data-aos-duration="500" data-aos="zoom-in" class="text-seven text-center text-sm md:text-base">Get to Know Us</h5>
+            <h1 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="300" class="text-xl sm:text-2xl md:text-3xl text-black dark:text-light text-center font-bold">About</h1>
         </div>
 
         <section class="py-14 md:py-30 grid grid-cols-1 md:grid-cols-[max-content_1fr] gap-6 md:gap-10 relative max-w-6xl mx-auto container px-3">
             <div class="w-130 h-130 bg-seven/30 blur-[1000rem] absolute top-0 left-1/2 md:left-[-50%] -translate-x-1/2 md:translate-x-1/2 -z-1"></div>
-            <img src="{{ asset('assets/images/maskot/3.png') }}" class="w-88 max-w-full mx-auto" alt="">
+            <img data-aos-duration="500" data-aos="fade-right" data-aos-delay="100" src="{{ asset('assets/images/maskot/3.png') }}" class="w-88 max-w-full mx-auto" alt="">
             <div class="text-center md:text-start">
-                <h5 class="text-sm md:text-base text-seven">About Us</h5>
-                <h2 class="text-lg sm:text-xl md:text-2xl text-black dark:text-light font-semibold mt-1">What is Workshop Multimedia Udayana?</h2>
-                <p class="text-black dark:text-light mt-3 text-sm md:text-base">Workshop Multimedia Udayana Vol. 3 adalah sebuah kegiatan yang menggabungkan pembelajaran teori dan praktik di bidang videografi. Peserta akan berkolaborasi dalam tim untuk menghasilkan sebuah karya. Kegiatan ini bertujuan untuk mengasah keterampilan praktis peserta melalui pengalaman langsung, sekaligus memberikan ruang untuk apresiasi dan pengembangan kreatif</p>
+                <h5 data-aos-duration="500" data-aos="fade-left" data-aos-delay="100" class="text-sm md:text-base text-seven">About Us</h5>
+                <h2 data-aos-duration="500" data-aos="fade-left" data-aos-delay="500" class="text-lg sm:text-xl md:text-2xl text-black dark:text-light font-semibold mt-1">What is Workshop Multimedia Udayana?</h2>
+                <p data-aos-duration="500" data-aos="fade-left" data-aos-delay="700" class="text-black dark:text-light mt-3 text-sm md:text-base">Workshop Multimedia Udayana Vol. 3 adalah sebuah kegiatan yang menggabungkan pembelajaran teori dan praktik di bidang videografi. Peserta akan berkolaborasi dalam tim untuk menghasilkan sebuah karya. Kegiatan ini bertujuan untuk mengasah keterampilan praktis peserta melalui pengalaman langsung, sekaligus memberikan ruang untuk apresiasi dan pengembangan kreatif</p>
             </div>
         </section>
 
@@ -78,41 +86,41 @@
             <img src="{{ asset('assets/images/gradient-blur-3.png') }}" class="w-full absolute top-0 -z-1" />
             <section class="py-14 md:py-30 max-w-lg mx-auto container px-3">
                 <div class="w-130 h-130 bg-seven/20 blur-[1000rem] absolute top-[50%] right-[-10%] translate-x-1/2 -z-1"></div>
-                <h5 class="text-seven text-center text-sm md:text-base">About Out Theme</h5>
-                <h1 class="text-center text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light mt-5 font-bold">“Record Every <span class="text-seven">Moments</span> <br> To Relive In <span class="text-seven">The Future</span> ”</h1>
-                <p class="text-sm md:text-base text-black dark:text-light mt-8 text-center">“Setiap momen yang kita abadikan dalam sebuah rekaman, akan terasa kembali hidup euforianya saat kita menontonnya kembali”</p>
+                <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">About Out Theme</h5>
+                <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-center text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light mt-5 font-bold">“Record Every <span class="text-seven">Moments</span> <br> To Relive In <span class="text-seven">The Future</span> ”</h1>
+                <p data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="text-sm md:text-base text-black dark:text-light mt-8 text-center">“Setiap momen yang kita abadikan dalam sebuah rekaman, akan terasa kembali hidup euforianya saat kita menontonnya kembali”</p>
             </section>
         </div>
 
         <div class="relative">
             <img src="{{ asset('assets/images/gradient-blur-3.png') }}" class="w-full absolute bottom-0 -z-1" />
             <section class="py-14 md:py-30 max-w-5xl container px-3 mx-auto">
-                <h5 class="text-seven text-center text-sm md:text-base">About Out Logo</h5>
-                <h1 class="text-center text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light mt-5 font-bold">Record Today, Cherish Tomorrow</h1>
-                <img src="{{ asset('assets/images/logo.png') }}" class="max-w-full md:max-w-100 mx-auto my-12" alt="">
+                <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">About Out Logo</h5>
+                <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-center text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light mt-5 font-bold">Record Today, Cherish Tomorrow</h1>
+                <img data-aos-duration="700" data-aos="zoom-in" data-aos-delay="500" src="{{ asset('assets/images/logo.png') }}" class="max-w-full md:max-w-100 mx-auto my-12" alt="">
                 <div class="hidden md:grid grid-cols-2 gap-5">
-                    <div class="col-span-2 p-5 rounded-lg flex flex-col items-center justify-center gap-3 bg-28-transparent">
+                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="col-span-2 p-5 rounded-lg flex flex-col items-center justify-center gap-3 bg-28-transparent">
                         <h6 class="text-seven font-bold text-sm md:text-base text-center">Warna Biru Toska & Ungu</h6>
                         <p class="text-center text-black dark:text-light text-sm md:text-base">Biru Toska mengartikan teknologi, inovasi, dan kejernihan berpikir. Ungu merepresentasikan kreatifitas, imajinasi, dan ekspresi artistik</p>
                     </div>
-                    <div class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent">
+                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent">
                         <h6 class="text-seven font-bold text-sm md:text-base">Bentuk Segi Enam</h6>
                         <p class="text-black dark:text-light text-sm md:text-base">Bermakna stabilitas, harmoni, dan keseimbangan. Disamping itu bentuk tersebut juga menjadi ceriminan dari enam disiplin dalam bidang Multimedia, yaitu: desain grafis, fotografi, videografi, animasi, audio, dan teknologi digital</p>
                     </div>
-                    <div class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent">
+                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent">
                         <h6 class="text-seven font-bold text-sm md:text-base text-right">Bentuk Segitiga</h6>
                         <p class="text-black dark:text-light text-sm md:text-base text-right">Bermakna "Tri", simbol Trikona, yang dalam Sansekerta mewakili Kreativitas (cipta), Ekspresi (rasa), Teknologi (karsa). Bentuk ini juga layaknya tombol “Play” yang mengartikan memulai langkah baru</p>
                     </div>
-                    <div class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent">
+                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent">
                         <h6 class="text-seven font-bold text-sm md:text-base">Gerakan Dinamis & Simetris</h6>
                         <p class="text-black dark:text-light text-sm md:text-base">Gerakan spiral yang melingkar mengarah ke tengah, menunjukkan sinkronisasi antar aspek multimedia seperti desain grafis, fotografi, videografi, animasi, audio, dan teknologi digital</p>
                     </div>
-                    <div class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent">
+                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent">
                         <h6 class="text-seven font-bold text-sm md:text-base text-right">Gerakan Dinamis & Simetris</h6>
                         <p class="text-black dark:text-light text-sm md:text-base text-right">Bentuk Desain Grafis yang mewakili bidang desain dan menyerupai sebuah kamera yang mewakili bidang videografi dan fotografi</p>
                     </div>
                 </div>
-                <div class="block md:hidden">
+                <div class="block md:hidden" data-aos-duration="500" data-aos="fade-up" data-aos-delay="500">
                     <div class="swiper" id="swiper-logo">
                         <div class="swiper-wrapper items-center">
                             <div class="swiper-slide px-16">
@@ -156,43 +164,43 @@
         <div class="relative">
             <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute -translate-y-1/2 top-[50%] -z-1" />
             <section class="py-14 md:py-30 max-w-5xl mx-auto container px-3">
-                <h5 class="text-seven text-center text-sm md:text-base">About Out Maskot</h5>
-                <h1 class="text-center text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light mt-5 font-bold">LORY</h1>
-                <h5 class="text-center text-sm md:text-base text-black dark:text-light mt-2">“Si Burung Hantu Cerdas dengan Penglihatan yang Tajam”</h5>
+                <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">About Out Maskot</h5>
+                <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-center text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light mt-5 font-bold">LORY</h1>
+                <h5 data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="text-center text-sm md:text-base text-black dark:text-light mt-2">“Si Burung Hantu Cerdas dengan Penglihatan yang Tajam”</h5>
                 <img src="{{ asset("assets/images/maskot/1.png") }}" class="block md:hidden max-w-full w-60 my-10 mx-auto" alt="">
                 <div class="hidden md:flex items-center justify-center gap-5 my-10 relative">
                     <div class="w-130 h-130 bg-seven/20 blur-[1000rem] absolute top-[50%] right-[50%] -translate-y-1/2 translate-x-1/2 -z-1"></div>
                     <div class="flex items-center justify-center gap-4 flex-col w-[35%]">
-                        <div class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
+                        <div data-aos-duration="500" data-aos="zoom-in-left" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
                             <h6 class="text-seven font-bold text-sm md:text-base">Busana Adat Bali</h6>
                             <p class="text-black dark:text-light text-sm md:text-base">Simbol Kearifan Lokal</p>
                         </div>
-                        <div class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
+                        <div data-aos-duration="500" data-aos="zoom-in-left" data-aos-delay="750" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
                             <h6 class="text-seven font-bold text-sm md:text-base">Warna Mata yang Biru</h6>
                             <p class="text-black dark:text-light text-sm md:text-base">Teknologi, inovasi, dan masa depan</p>
                         </div>
-                        <div class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
+                        <div data-aos-duration="500" data-aos="zoom-in-left" data-aos-delay="1000" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
                             <h6 class="text-seven font-bold text-sm md:text-base">Warna Emas pada Pakaian</h6>
                             <p class="text-black dark:text-light text-sm md:text-base">Kemewahan, kesuksesan, dan kejayaan. Warna emas juga sering dikaitkan dengan kebijaksanaan, nilai tinggi, serta ambisi dan pencapaian luar biasa</p>
                         </div>
                     </div>
-                    <img src="{{ asset("assets/images/maskot/1.png") }}" class="w-[30%]" alt="">
+                    <img data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" src="{{ asset("assets/images/maskot/1.png") }}" class="w-[30%]" alt="">
                     <div class="flex items-center justify-center gap-4 flex-col w-[35%]">
-                        <div class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
+                        <div data-aos-duration="500" data-aos="zoom-in-right" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
                             <h6 class="text-seven text-right font-bold text-sm md:text-base">Kamera</h6>
                             <p class="text-black dark:text-light text-sm md:text-base text-right">Siap mengabadikan setiap momen</p>
                         </div>
-                        <div class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
+                        <div data-aos-duration="500" data-aos="zoom-in-right" data-aos-delay="750" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
                             <h6 class="text-seven text-right font-bold text-sm md:text-base">Warna Coklat pada Bulu</h6>
                             <p class="text-black dark:text-light text-sm md:text-base text-right">Memberikan kesan natural, rustic, dan organik</p>
                         </div>
-                        <div class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
+                        <div data-aos-duration="500" data-aos="zoom-in-right" data-aos-delay="1000" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
                             <h6 class="text-seven text-right font-bold text-sm md:text-base">Warna Ungu pada Pakaian</h6>
                             <p class="text-black dark:text-light text-sm md:text-base text-right">Kemewahan dan Keagungan</p>
                         </div>
                     </div>
                 </div>
-                <div class="block md:hidden my-10">
+                <div class="block md:hidden my-10" data-aos-duration="500" data-aos="fade-up" data-aos-delay="500">
                     <div class="swiper" id="swiper-logo">
                         <div class="swiper-wrapper items-center">
                             <div class="swiper-slide px-16">
@@ -236,7 +244,7 @@
                         <div class="p-3 !w-10 !h-10 aspect-square rounded-full bg-main-gradient !text-light/80 after:!text-sm swiper-button-prev"></div>
                     </div>
                 </div>
-                <p class="text-black dark:text-light text-center text-sm md:text-base">
+                <p data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="text-black dark:text-light text-center text-sm md:text-base">
                     Lory merupakan representasi dari Burung Hantu, hewan yang dikenal dengan penglihatannya yang sangat tajam, kemampuan berpikir kritis, serta kepekaan terhadap lingkungan sekitar. Karakteristik ini merepresentasikan seseorang yang bergerak di bidang multimedia.
                 </p>
             </section>
@@ -247,11 +255,11 @@
         <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute -translate-y-1/2 top-[50%] -z-1" />
         <div class="container px-3 mx-auto relative">
             <div class="w-130 h-130 bg-seven/30 blur-[1000rem] absolute top-0 right-[-50%] -translate-x-1/2 -z-1"></div>
-            <h5 class="text-seven text-center text-sm md:text-base">Masterpiece</h5>
-            <h1 class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Showcase</h1>
-            <p class="text-black text-sm md:text-base dark:text-light text-center mt-2">Explore hasil karya dari peserta Workshop Multimedia Udayana</p>
+            <h5  data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">Masterpiece</h5>
+            <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Showcase</h1>
+            <p data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="text-black text-sm md:text-base dark:text-light text-center mt-2">Explore hasil karya dari peserta Workshop Multimedia Udayana</p>
             <div class="my-10 max-w-2xl mx-auto">
-                <div class="relative w-full max-w-full md:max-w-2xl aspect-video mx-auto rounded-lg md:rounded-xl overflow-hidden">
+                <div data-aos-duration="500" data-aos="fade-up" class="relative w-full max-w-full md:max-w-2xl aspect-video mx-auto rounded-lg md:rounded-xl overflow-hidden">
                     <iframe id="ytplayer" type="text/html" 
                         src="{{ $showcases[0]->youtubeEmbedUrl }}" 
                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
@@ -261,17 +269,20 @@
 
                 <div class="grid grid-cols-3 gap-3 mt-5" id="showcase-thumbnails">
                     @foreach($showcases as $index => $showcase)
-                        <button type="button" 
-                            class="rounded-lg md:rounded-xl cursor-pointer transition-all duration-200  {{ $index != 0 ? 'grayscale' : '' }}" 
+                        <button data-aos-duration="500" data-aos="zoom-in" data-aos-delay="{{ $index == 0 ? 100 : ($index == 1 ? 250 : 500) }}" type="button" 
+                            class="relative group rounded-lg overflow-hidden md:rounded-xl cursor-pointer transition-all duration-200  {{ $index != 0 ? 'grayscale' : '' }}" 
                             data-url="{{ $showcase->youtubeEmbedUrl }}">
                             <img src="{{ Storage::url($showcase->cover) }}" 
                                 class="rounded-lg md:rounded-xl w-full aspect-video object-cover" 
                                 alt="{{ $showcase->title }}">
+                            <div class="absolute top-0 left-0 h-full w-full flex items-center justify-center text-light transition-all duration-300 group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:to-black group-hover:translate-y-0 translate-y-full">
+                                Click to Show
+                            </div>
                         </button>
                     @endforeach
                 </div>
             </div>
-            <a href="{{ route('showcase.index') }}" class="flex items-center justify-center mx-auto w-max">
+            <a data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" href="{{ route('showcase.index') }}" class="flex items-center justify-center mx-auto w-max">
                 <button class="text-sm md:text-base py-3 px-5 rounded-full bg-main-gradient cursor-pointer text-light">
                     View More
                 </button>
@@ -282,8 +293,8 @@
     <section class="py-10 md:py-24 relative">
         <div class="w-130 h-130 bg-seven/20 blur-[1000rem] absolute top-0 left-[-50%] translate-x-1/2 -z-1"></div>
         <div class="container px-3 mx-auto">
-            <h5 class="text-seven text-center text-sm md:text-base">Timeline</h5>
-            <h1 class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Important Event Dates</h1>
+            <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">Timeline</h5>
+            <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Important Event Dates</h1>
             <div class="my-10 grid md:grid-cols-[1fr_max-content_1fr] relative max-w-5xl mx-auto">
                 <div class="absolute py-5 h-full top-0 left-1/2 -translate-x-1/2 -z-1">
                     <div class="w-1 h-full bg-seven"></div>
@@ -296,7 +307,7 @@
                         $isTodayBetween = $today->between($start, $end);
                     @endphp
                     @if ($index % 2 == 0)
-                        <div class="w-full p-5 ">
+                        <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="w-full p-5 ">
                             <div class="w-full rounded-xl border-[1px] border-[#FCFDFD]/50 {{ $isTodayBetween ? 'bg-second-gradient' : 'bg-[#9489AB] dark:bg-two' }} p-5">
                                 <div class="flex gap-3 items-center {{ $isTodayBetween ? '' : 'opacity-50'}}">
                                     <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -316,7 +327,7 @@
                         </div>
                         <div class="w-14 relative hidden md:flex justify-center items-center">
                             <div class="w-1 h-full bg-seven"></div>
-                            <div class=" absolute bg-light dark:bg-one border-3 border-seven w-10 h-10 rounded-full"></div>
+                            <div class="{{ $isTodayBetween ? 'animate-ping' : '' }} absolute bg-light dark:bg-one border-3 border-seven w-10 h-10 rounded-full"></div>
                             <div class=" absolute bg-seven w-6 h-6 rounded-full"></div>
                         </div>
                         <div class="w-full"></div>
@@ -324,10 +335,10 @@
                         <div class="w-full"></div>
                         <div class="w-14 relative hidden md:flex justify-center items-center">
                             <div class="w-1 h-full bg-seven"></div>
-                            <div class=" absolute bg-light dark:bg-one border-3 border-seven w-10 h-10 rounded-full"></div>
+                            <div class="{{ $isTodayBetween ? 'animate-ping' : '' }} absolute bg-light dark:bg-one border-3 border-seven w-10 h-10 rounded-full"></div>
                             <div class=" absolute bg-seven w-6 h-6 rounded-full"></div>
                         </div>
-                        <div class="w-full p-5 ">
+                        <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="w-full p-5 ">
                             <div class="w-full rounded-xl border-[1px] border-[#FCFDFD]/50 {{ $isTodayBetween ? 'bg-second-gradient' : 'bg-[#9489AB] dark:bg-two' }} p-5">
                                 <div class="flex gap-3 items-center {{ $isTodayBetween ? '' : 'opacity-50' }}">
                                     <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -355,11 +366,11 @@
         <img src="{{ asset('assets/images/gradient-blur-3.png') }}" class="w-full absolute -top-[50%] -z-1" />
         <div class="w-130 h-130 bg-seven/10 blur-[1000rem] absolute top-0 right-[-50%] -translate-x-1/2 -z-1"></div>
         <div class="container px-3 mx-auto">
-            <h5 class="text-seven text-center text-sm md:text-base">Sponsor</h5>
-            <h1 class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Sponsored By</h1>
+            <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">Sponsor</h5>
+            <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Sponsored By</h1>
         </div>
         <div class="my-10">
-            <div class="swiper swiper-3">
+            <div class="swiper swiper-3" data-aos-duration="1500" data-aos="fade-up" data-aos-delay="500">
                 <div class="swiper-wrapper">
                     @foreach ($mainSponsors as $sponsor)
                         <div class="swiper-slide">
@@ -369,7 +380,7 @@
                 </div>
             </div>
         </div>
-        <div class="swiper swiper-6">
+        <div class="swiper swiper-6" data-aos-duration="1000" data-aos="fade-up" data-aos-delay="500">
             <div class="swiper-wrapper">
                 @foreach ($supportSponsors as $sponsor)
                     <div class="swiper-slide">
@@ -384,13 +395,13 @@
         <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute -translate-y-1/2 top-[50%] -z-1" />
         <div class="w-130 h-130 bg-seven/30 blur-[1000rem] absolute top-0 left-[-50%] translate-x-1/2 -z-1"></div>
         <div class="container px-3 mx-auto">
-            <h5 class="text-seven text-center text-sm md:text-base scroll-mt-24" id="faq">FAQ</h5>
-            <h1 class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Frequently Asked Questions</h1>
+            <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base scroll-mt-24" id="faq">FAQ</h5>
+            <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Frequently Asked Questions</h1>
             <div class="mt-5 md:mt-10 grid md:grid-cols-[max-content_1fr] max-w-5xl mx-auto gap-10">
-                <img src="{{ asset('assets/images/maskot/2.png') }}" class="w-60 md:block hidden max-w-full mt-auto" alt="">
+                <img data-aos-duration="500" data-aos="fade-right" data-aos-delay="500" src="{{ asset('assets/images/maskot/2.png') }}" class="w-60 md:block hidden max-w-full mt-auto" alt="">
                 <div class="mx-auto mt-10 space-y-4 w-full">
                     @foreach ($faqs as $faq)
-                        <div class="faq-item border border-gray-300 dark:border-light rounded-lg overflow-hidden bg-28-transparent hover:bg-light dark:hover:bg-two transition-all duration-200">
+                        <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="faq-item border border-gray-300 dark:border-light rounded-lg overflow-hidden bg-28-transparent hover:bg-light dark:hover:bg-two transition-all duration-200">
                             <button class="faq-btn cursor-pointer w-full text-left flex justify-between items-center p-4">
                                 <span class="text-black dark:text-light font-medium text-sm md:text-base">{{ $faq['question'] }}</span>
                                 <svg class="w-5 h-5 fill-black dark:fill-light transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
@@ -415,12 +426,12 @@
     <section class="py-10 md:py-24 relative">
         <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute -translate-y-1/2 top-[50%] -z-1" />
         <div class="container px-3 mx-auto">
-            <h5 class="text-seven text-center text-sm md:text-base scroll-mt-24" id="cp">CP</h5>
-            <h1 class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Contact Person</h1>
-            <p class="text-center text-sm md:text-base mt-2 text-black dark:text-light">Jika Anda memiliki pertanyaan lebih lanjut, jangan ragu untuk menghubungi narahubung di bawah ini</p>
+            <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base scroll-mt-24" id="cp">CP</h5>
+            <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Contact Person</h1>
+            <p data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="text-center text-sm md:text-base mt-2 text-black dark:text-light">Jika Anda memiliki pertanyaan lebih lanjut, jangan ragu untuk menghubungi narahubung di bawah ini</p>
             <div class="max-w-2xl grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-10 mx-auto mt-10">
-                @foreach ($contactPersons as $cp)
-                    <div class="rounded-lg border-[1px] border-[#A295AC] p-5 bg-28-transparent flex flex-col gap-5 w-full">
+                @foreach ($contactPersons as $index => $cp)
+                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="{{ $index == 0 ? 500 : 750 }}" class="rounded-lg border-[1px] border-[#A295AC] p-5 bg-28-transparent flex flex-col gap-5 w-full">
                         <div class="flex items-center gap-3">
                             <div class="flex items-center justify-center p-3 rounded-full bg-seven">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-light size-5 md:size-6" fill="currentColor">

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title }} Workshop Multimedia Udayana</title>
+    <title>@yield('title', $title ?? '') Workshop Multimedia Udayana</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/logo.ico') }}">
     {{-- SEO Meta Tags --}}
     <meta name="description" content="Workshop Multimedia Udayana adalah">
@@ -45,10 +45,11 @@
       />
       <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
       <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="min-h-screen overflow-x-hidden bg-white dark:bg-gradient-to-b dark:from-[#0A091D] dark:from-0% dark:via-one dark:via-10% dark:to-[#0A091D] dark:to-100% dark:bg-no-repeat">
-  
-    <main class="max-w-full overflow-hidden relative">
+    <div id="blob-container" class="fixed inset-0 -z-10"></div>
+    <main class="max-w-full overflow-hidden relative z-1">
       @include('layouts.header')
   
       <img src="{{ asset('assets/images/gradient-blur.png') }}" class="w-full absolute top-0 -z-1" />
@@ -58,6 +59,13 @@
       @include('layouts.footer')
     </main>
     
+    <script src="{{ asset('js/blob-manager.js') }}"></script>
+    <script>  
+      let blobManager;
+      document.addEventListener('DOMContentLoaded', () => {
+          blobManager = new BlobManager();
+      });
+    </script>
     <script>
       const qrCodeBlack = new QRCodeStyling({
           width: 120,
@@ -194,7 +202,10 @@
         });
       });
     </script>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
     @yield('scripts')
 </body>
 </html>

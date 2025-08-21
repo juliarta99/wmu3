@@ -45,6 +45,9 @@
                     @disabled(in_array(strtolower($link->back_half), ['register', 'pre-test', 'post-test']))
                     value="{{ old('back_half', $link->back_half) }}"
                 >
+                @if (in_array(strtolower($link->back_half), ['register', 'pre-test', 'post-test']))
+                    <input type="hidden" name="back_half" value="{{ $link->back_half }}">
+                @endif
                 @error('back_half')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
                 @enderror
