@@ -280,8 +280,8 @@
                         footer: `
                             ${
                                 team.showcase 
-                                ? `<a href="{{ route('dashboard.team.index') }}/${teamId}" 
-                                    class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors duration-200">
+                                ? `<a href="{{ route('dashboard.showcase.index') }}/${team.showcase.slug}" 
+                                    class="px-4 py-2 bg-main-gradient text-light rounded-lg ">
                                         Lihat Karya Tim
                                 </a>`
                                 : `<p class="text-gray-500 italic">Karya belum ditambahkan</p>`

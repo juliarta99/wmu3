@@ -92,7 +92,7 @@
                             <td class="px-4 py-2">
                                 <img src="{{ Storage::url($showcase->cover) }}" class="object-cover h-28 rounded-lg aspect-video" alt="Sampul {{ $showcase->title }}">
                             </td>
-                            <td class="px-4 py-2 font-medium">{{ $showcase->team->name }}</td>
+                            <td class="px-4 py-2 font-medium">{{ $showcase->team->name }} - {{ $showcase->team->year }}</td>
                             <td class="px-4 py-2 font-medium">
                                 @if ($showcase->champion == 1)
                                     {{-- #1 --}}

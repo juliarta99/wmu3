@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeAdmin;
+use App\Http\Controllers\ShortLinkController;
 use App\Http\Controllers\ShowcaseController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
@@ -34,12 +35,8 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
 
     Route::resource('team', TeamController::class);
     Route::resource('showcase', ShowcaseController::class);
+    Route::resource('shortener', ShortLinkController::class)->parameters(['shortener' => 'short_link']);;
 });
-
-Route::get('/dashboard/shortener', function () {
-    $title = "Dashboard Shortener - ";
-    return view('dashboard.shortener.index', compact('title'));
-})->name('dashboard.shortener.index');
 
 //test websoket
 Route::get('/homeadmin', function () {

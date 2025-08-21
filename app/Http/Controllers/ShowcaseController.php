@@ -68,10 +68,16 @@ class ShowcaseController extends Controller
         return view('dashboard.showcase.create', compact('title', 'teams'));
     }
 
+    public function show(Showcase $showcase)  {
+        $showcase->load('team', 'team.contributors');
+        $title = "Dashboard Showcase ". $showcase->title ." - ";
+        return view('dashboard.showcase.show', compact('title', 'showcase'));
+    }
+
     public function edit(Showcase $showcase)  {
         $showcase->load('team');
         $teams = Team::latest()->get();
-        $title = "Dashboard Create Showcase - ";
+        $title = "Dashboard Edit Showcase - ";
         return view('dashboard.showcase.edit', compact('title', 'showcase', 'teams'));
     }
 

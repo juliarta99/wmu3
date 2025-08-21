@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ShortLink extends Model
 {
     protected $fillable = [
-        'title',
+        'name',
         'link',
         'back_half',
         'open_at',
@@ -19,5 +19,10 @@ class ShortLink extends Model
     public function created_by() 
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'back_half';
     }
 }

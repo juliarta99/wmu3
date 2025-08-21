@@ -7,6 +7,7 @@ use App\Models\Team;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,5 +27,11 @@ class DatabaseSeeder extends Seeder
                 'team_id' => $team->id
             ]);
         };
+
+        User::create([
+            'username' => 'minwmuvol3',
+            'password' => Hash::make('WMU#3password'),
+            'role' => 1
+        ]);
     }
 }

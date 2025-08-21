@@ -56,10 +56,9 @@ class TeamController extends Controller
 
     public function edit(Team $team)  {
         $team->load('contributors');
-        $title = "Dashboard Create Team - ";
+        $title = "Dashboard Edit Team - ";
         return view('dashboard.team.edit', compact('title', 'team'));
     }
-
 
     public function store(Request $request) {
         try {
@@ -268,8 +267,7 @@ class TeamController extends Controller
                 ]);
             }
 
-            return view('dashboard.team.show', compact('team'));
-
+            abort(404);
         } catch (\Exception $e) {
             if ($request->ajax()) {
                 return response()->json([

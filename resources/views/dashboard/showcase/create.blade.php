@@ -76,7 +76,7 @@
                 <select name="team_id" id="team_id" class="border border-gray-300 px-4 py-2 rounded-lg @error('team_id') border-red-500 @enderror" >
                     <option value="">Pilih team</option>
                     @foreach ($teams as $team)
-                        <option value="{{ $team->id }}" {{ old('team_id') == $team->id ? 'selected' : '' }}>{{ $team->name }}</option>
+                        <option value="{{ $team->id }}" {{ old('team_id') == $team->id ? 'selected' : '' }}>{{ $team->name }} - {{ $team->year }}</option>
                     @endforeach
                 </select>
                 @error('team_id')
