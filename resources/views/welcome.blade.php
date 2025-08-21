@@ -251,44 +251,46 @@
         </div>
     </section>
 
-    <section class="py-10 md:py-24 relative">
-        <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute -translate-y-1/2 top-[50%] -z-1" />
-        <div class="container px-3 mx-auto relative">
-            <div class="w-130 h-130 bg-seven/30 blur-[1000rem] absolute top-0 right-[-50%] -translate-x-1/2 -z-1"></div>
-            <h5  data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">Masterpiece</h5>
-            <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Showcase</h1>
-            <p data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="text-black text-sm md:text-base dark:text-light text-center mt-2">Explore hasil karya dari peserta Workshop Multimedia Udayana</p>
-            <div class="my-10 max-w-2xl mx-auto">
-                <div data-aos-duration="500" data-aos="fade-up" class="relative w-full max-w-full md:max-w-2xl aspect-video mx-auto rounded-lg md:rounded-xl overflow-hidden">
-                    <iframe id="ytplayer" type="text/html" 
-                        src="{{ $showcases[0]->youtubeEmbedUrl }}" 
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
-                        frameborder="0">
-                    </iframe>
-                </div>
+    @if ($hasShowcase)
+        <section class="py-10 md:py-24 relative">
+            <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute -translate-y-1/2 top-[50%] -z-1" />
+            <div class="container px-3 mx-auto relative">
+                <div class="w-130 h-130 bg-seven/30 blur-[1000rem] absolute top-0 right-[-50%] -translate-x-1/2 -z-1"></div>
+                <h5  data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">Masterpiece</h5>
+                <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Showcase</h1>
+                <p data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="text-black text-sm md:text-base dark:text-light text-center mt-2">Explore hasil karya dari peserta Workshop Multimedia Udayana</p>
+                <div class="my-10 max-w-2xl mx-auto">
+                    <div data-aos-duration="500" data-aos="fade-up" class="relative w-full max-w-full md:max-w-2xl aspect-video mx-auto rounded-lg md:rounded-xl overflow-hidden">
+                        <iframe id="ytplayer" type="text/html" 
+                            src="{{ $showcases[0]->youtubeEmbedUrl }}" 
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
+                            frameborder="0">
+                        </iframe>
+                    </div>
 
-                <div class="grid grid-cols-3 gap-3 mt-5" id="showcase-thumbnails">
-                    @foreach($showcases as $index => $showcase)
-                        <button data-aos-duration="500" data-aos="zoom-in" data-aos-delay="{{ $index == 0 ? 100 : ($index == 1 ? 250 : 500) }}" type="button" 
-                            class="relative group rounded-lg overflow-hidden md:rounded-xl cursor-pointer transition-all duration-200  {{ $index != 0 ? 'grayscale' : '' }}" 
-                            data-url="{{ $showcase->youtubeEmbedUrl }}">
-                            <img src="{{ Storage::url($showcase->cover) }}" 
-                                class="rounded-lg md:rounded-xl w-full aspect-video object-cover" 
-                                alt="{{ $showcase->title }}">
-                            <div class="absolute top-0 left-0 h-full w-full flex items-center justify-center text-light transition-all duration-300 group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:to-black group-hover:translate-y-0 translate-y-full">
-                                Click to Show
-                            </div>
-                        </button>
-                    @endforeach
+                    <div class="grid grid-cols-3 gap-3 mt-5" id="showcase-thumbnails">
+                        @foreach($showcases as $index => $showcase)
+                            <button data-aos-duration="500" data-aos="zoom-in" data-aos-delay="{{ $index == 0 ? 100 : ($index == 1 ? 250 : 500) }}" type="button" 
+                                class="relative group rounded-lg overflow-hidden md:rounded-xl cursor-pointer transition-all duration-200  {{ $index != 0 ? 'grayscale' : '' }}" 
+                                data-url="{{ $showcase->youtubeEmbedUrl }}">
+                                <img src="{{ Storage::url($showcase->cover) }}" 
+                                    class="rounded-lg md:rounded-xl w-full aspect-video object-cover" 
+                                    alt="{{ $showcase->title }}">
+                                <div class="absolute top-0 left-0 h-full w-full flex items-center justify-center text-light transition-all duration-300 group-hover:bg-gradient-to-b group-hover:from-transparent group-hover:to-black group-hover:translate-y-0 translate-y-full">
+                                    Click to Show
+                                </div>
+                            </button>
+                        @endforeach
+                    </div>
                 </div>
+                <a data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" href="{{ route('showcase.index') }}" class="flex items-center justify-center mx-auto w-max">
+                    <button class="text-sm md:text-base py-3 px-5 rounded-full bg-main-gradient cursor-pointer text-light">
+                        View More
+                    </button>
+                </a>
             </div>
-            <a data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" href="{{ route('showcase.index') }}" class="flex items-center justify-center mx-auto w-max">
-                <button class="text-sm md:text-base py-3 px-5 rounded-full bg-main-gradient cursor-pointer text-light">
-                    View More
-                </button>
-            </a>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <section class="py-10 md:py-24 relative">
         <div class="w-130 h-130 bg-seven/20 blur-[1000rem] absolute top-0 left-[-50%] translate-x-1/2 -z-1"></div>

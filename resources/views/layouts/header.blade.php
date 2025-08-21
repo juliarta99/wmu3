@@ -7,7 +7,7 @@
         <div class="md:flex gap-8 items-center hidden">
             <a href="{{ route('home') }}" class="text-black text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">Home</a>
             <a href="/#about" class="text-black text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">About</a>
-            @if ($routeTarget != 'showcase')
+            @if ($routeTarget != 'showcase' && $hasShowcase)
                 <a href="{{ route('showcase.index') }}" class="text-black text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">Showcase</a>
             @endif
             <a href="/#faq" class="text-black text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">FAQ</a>

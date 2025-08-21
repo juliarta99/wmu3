@@ -25,13 +25,6 @@ class GuestController extends Controller
         $year = now()->year;
         $visitor = Visitor::where('year', $year)->first();
 
-        $routeTarget = "showcase";
-        if ($this->isLinkAccessible('register')) {
-            $routeTarget = 'register';
-        } elseif ($this->isLinkAccessible('pre-test') || $this->isLinkAccessible('post-test')) {
-            $routeTarget = 'quiz';
-        }
-
         if(!$visitor) {
             Visitor::create([
                 'year' => $year,
@@ -128,6 +121,16 @@ class GuestController extends Controller
         }
 
         $showcases = $showcases->take(3);
+        $hasShowcase = $showcases->count() > 0;
+
+        $routeTarget = "showcase";
+        if ($this->isLinkAccessible('register')) {
+            $routeTarget = 'register';
+        } elseif ($this->isLinkAccessible('pre-test') || $this->isLinkAccessible('post-test')) {
+            $routeTarget = 'quiz';
+        } elseif (!$hasShowcase) {
+            $routeTarget = 'register';
+        }
 
         $faqs = [
             [
@@ -192,17 +195,24 @@ class GuestController extends Controller
             ],
         ];
 
-        return view('welcome', compact('title', 'routeTarget', 'mainSponsors', 'supportSponsors', 'showcases', 'faqs', 'timelines', 'contactPersons'));
+        return view('welcome', compact('title', 'routeTarget', 'mainSponsors', 'supportSponsors', 'showcases', 'faqs', 'timelines', 'contactPersons', 'hasShowcase'));
     }
 
     public function showcases(Request $request) {
         $title = "Showcase - ";
 
         $routeTarget = "showcase";
+        $year = now()->year;
+        $hasShowcase = Showcase::whereHas('team', function ($q) use ($year) {
+            $q->where('year', $year);
+        })->exists();
+
         if ($this->isLinkAccessible('register')) {
             $routeTarget = 'register';
         } elseif ($this->isLinkAccessible('pre-test') || $this->isLinkAccessible('post-test')) {
             $routeTarget = 'quiz';
+        } elseif (!$hasShowcase) {
+            $routeTarget = 'register';
         }
 
         $year = Carbon::now()->year;
@@ -229,10 +239,10 @@ class GuestController extends Controller
                     ->whereHas('team', function ($t) use ($year) {
                         $t->where('year', $year);
                     })
-                    ->paginate(2)
+                    ->paginate(10)
                     ->appends($request->query());
         
-        return view('showcase.index', compact('title', 'routeTarget', 'showcases'));
+        return view('showcase.index', compact('title', 'routeTarget', 'showcases', 'hasShowcase'));
     }
 
     public function showcase(Showcase $showcase) {
@@ -240,32 +250,45 @@ class GuestController extends Controller
         $title = "Detail Showcase - ";
 
         $routeTarget = "showcase";
+        $year = now()->year;
+        $hasShowcase = Showcase::whereHas('team', function ($q) use ($year) {
+            $q->where('year', $year);
+        })->exists();
+
         if ($this->isLinkAccessible('register')) {
             $routeTarget = 'register';
         } elseif ($this->isLinkAccessible('pre-test') || $this->isLinkAccessible('post-test')) {
             $routeTarget = 'quiz';
+        } elseif (!$hasShowcase) {
+            $routeTarget = 'register';
         }
 
-        return view('showcase.show', compact('title', 'routeTarget', 'showcase'));
+        return view('showcase.show', compact('title', 'routeTarget', 'showcase', 'hasShowcase'));
     }
 
     public function quiz() {
         $title = "Quiz - ";
-
         $routeTarget = "showcase";
+        $year = now()->year;
+        $hasShowcase = Showcase::whereHas('team', function ($q) use ($year) {
+            $q->where('year', $year);
+        })->exists();
+
         if ($this->isLinkAccessible('register')) {
             $routeTarget = 'register';
         } elseif ($this->isLinkAccessible('pre-test') || $this->isLinkAccessible('post-test')) {
             $routeTarget = 'quiz';
+        } elseif (!$hasShowcase) {
+            $routeTarget = 'register';
         }
 
         $postTestLink = ShortLink::where("back_half", "post-test")->first();
         $preTestLink = ShortLink::where("back_half", "pre-test")->first();
 
-        if($postTestLink->is_expired || $postTestLink->is_not_started || $preTestLink->is_not_started || $preTestLink->is_expired) {
+        if(($postTestLink->is_expired || $postTestLink->is_not_started) && ($preTestLink->is_not_started || $preTestLink->is_expired)) {
             abort(404);
         }
 
-        return view('quiz', compact('title', 'routeTarget', 'postTestLink', 'preTestLink'));
+        return view('quiz', compact('title', 'routeTarget', 'postTestLink', 'preTestLink', 'hasShowcase'));
     }
 }
