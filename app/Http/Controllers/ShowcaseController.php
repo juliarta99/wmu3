@@ -365,8 +365,6 @@ class ShowcaseController extends Controller
             $showcase->slug = null;
             $showcase->update($data);
             
-            broadcastParseValue();
-            
             $successMessage = 'Data showcase berhasil diperbarui!';
             
             if ($request->expectsJson()) {

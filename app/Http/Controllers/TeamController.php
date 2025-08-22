@@ -302,7 +302,8 @@ class TeamController extends Controller
 
                 $team->delete();
             });
-
+            broadcastParseValue();
+            
             return response()->json([
                 'success' => true,
                 'message' => 'Team dan semua data terkait berhasil dihapus!'

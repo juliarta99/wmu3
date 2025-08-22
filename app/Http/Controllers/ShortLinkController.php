@@ -179,6 +179,7 @@ class ShortLinkController extends Controller
             ]);
 
             $successMessage = 'Link Shortener berhasil ditambahkan!';
+            broadcastParseValue();
             
             if ($request->expectsJson()) {
                 return response()->json([
