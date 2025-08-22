@@ -98,7 +98,7 @@
                     </svg>
                 </button>
 
-                <a href="#" class="hidden lg:flex items-center space-x-2">
+                <a href="{{ route('dashboard.profile.index') }}" class="hidden lg:flex items-center space-x-2">
                     <svg class="size-6 stroke-light" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 9.5C14.0711 9.5 15.75 7.82107 15.75 5.75C15.75 3.67893 14.0711 2 12 2C9.92893 2 8.25 3.67893 8.25 5.75C8.25 7.82107 9.92893 9.5 12 9.5Z" stroke-width="1.66667"/>
                         <path d="M2 19.5C2 18.1739 2.52678 16.9021 3.46447 15.9645C4.40215 15.0268 5.67392 14.5 7 14.5H17C18.3261 14.5 19.5979 15.0268 20.5355 15.9645C21.4732 16.9021 22 18.1739 22 19.5C22 20.163 21.7366 20.7989 21.2678 21.2678C20.7989 21.7366 20.163 22 19.5 22H4.5C3.83696 22 3.20107 21.7366 2.73223 21.2678C2.26339 20.7989 2 20.163 2 19.5Z" stroke-width="1.66667" stroke-linejoin="round"/>
@@ -111,7 +111,7 @@
                     <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" class="inline-block w-8"> <span class="text-xs font-normal">Workshop Multimedia <br> Udayana</span>
                 </div>
                 <div class="flex lg:hidden items-center gap-3">
-                    <a href="#" class="items-center space-x-2">
+                    <a href="{{ route('dashboard.profile.index') }}" class="items-center space-x-2">
                         <svg class="size-5 stroke-light" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 9.5C14.0711 9.5 15.75 7.82107 15.75 5.75C15.75 3.67893 14.0711 2 12 2C9.92893 2 8.25 3.67893 8.25 5.75C8.25 7.82107 9.92893 9.5 12 9.5Z" stroke-width="1.66667"/>
                             <path d="M2 19.5C2 18.1739 2.52678 16.9021 3.46447 15.9645C4.40215 15.0268 5.67392 14.5 7 14.5H17C18.3261 14.5 19.5979 15.0268 20.5355 15.9645C21.4732 16.9021 22 18.1739 22 19.5C22 20.163 21.7366 20.7989 21.2678 21.2678C20.7989 21.7366 20.163 22 19.5 22H4.5C3.83696 22 3.20107 21.7366 2.73223 21.2678C2.26339 20.7989 2 20.163 2 19.5Z" stroke-width="1.66667" stroke-linejoin="round"/>

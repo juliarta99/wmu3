@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShortLinkController;
 use App\Http\Controllers\ShowcaseController;
 use App\Http\Controllers\TeamController;
@@ -23,10 +24,13 @@ Route::middleware(['auth'])->group(function () {
     
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
-    
+        
         Route::resource('team', TeamController::class);
         Route::resource('showcase', ShowcaseController::class);
         Route::resource('shortener', ShortLinkController::class)->parameters(['shortener' => 'short_link']);;
+        
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+        Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
     });
 });
 

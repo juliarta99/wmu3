@@ -88,11 +88,11 @@
                 <div class="w-130 h-130 bg-seven/20 blur-[1000rem] absolute top-[50%] right-[-10%] translate-x-1/2 -z-1"></div>
                 <div class="relative group">
                     <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">About Our Theme</h5>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-14 md:size-20 stroke-seven absolute -translate-x-1/2 top-1/2 -translate-y-1/2 left-1/2 scale-0 transition-all duration-750 group-hover:scale-100 group-hover:-rotate-45 group-hover:-translate-y-[20%] group-hover:-translate-x-full group-hover:left-0 group-hover:-top-5 group-hover:opacity-100 opacity-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-14 md:size-20 stroke-seven absolute -translate-x-1/2 top-1/2 -translate-y-1/2 left-1/2 scale-0 transition-all duration-750 group-hover:scale-100 group-hover:-rotate-45 group-hover:-translate-y-[20%] group-hover:-translate-x-full group-hover:md:left-0 group-hover:md:-top-5 group-hover:left-[15%] group-hover:-top-[5%] group-hover:opacity-100 opacity-0">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
                         <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
                     </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-14 md:size-20 stroke-gray-800 absolute translate-x-1/2 top-1/2 -translate-y-1/2 right-1/2 scale-0 transition-all duration-750 group-hover:scale-100 group-hover:rotate-15 group-hover:-translate-y-[20%] group-hover:translate-x-full group-hover:right-0 group-hover:top-0 group-hover:opacity-100 opacity-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-14 md:size-20 dark:stroke-light stroke-gray-800 absolute translate-x-1/2 top-1/2 -translate-y-1/2 right-1/2 scale-0 transition-all duration-750 group-hover:scale-100 group-hover:rotate-15 group-hover:-translate-y-[20%] group-hover:translate-x-full group-hover:md:right-0 group-hover:right-[20%] group-hover:-top-[10%] group-hover:md:top-0 group-hover:opacity-100 opacity-0">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
                     </svg>
                     <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-center text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light mt-5 font-bold">“Record Every <span class="text-seven">Moments</span> <br> To Relive In <span class="text-seven">The Future</span> ”</h1>
@@ -179,7 +179,7 @@
                 <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-center text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light mt-5 font-bold">LORY</h1>
                 <h5 data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="text-center text-sm md:text-base text-black dark:text-light mt-2">“Si Burung Hantu Cerdas dengan Penglihatan yang Tajam”</h5>
                 <div data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="{{ asset("assets/images/maskot/1.png") }}" class="block md:hidden max-w-full w-60 mt-8 md:my-10 mx-auto transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:drop-shadow-2xl drop-shadow-seven" alt="">
+                    <img src="{{ asset("assets/images/maskot/1.png") }}" class="block md:hidden max-w-full w-60 mt-8 md:my-10 mx-auto transition-all duration-300 hover:scale-105 hover:-translate-y-3 hover:drop-shadow-2xl drop-shadow-seven" alt="">
                 </div>
                 <div class="hidden md:flex items-center justify-center gap-5 my-10 relative">
                     <div class="w-130 h-130 bg-seven/20 blur-[1000rem] absolute top-[50%] right-[50%] -translate-y-1/2 translate-x-1/2 -z-1"></div>
@@ -415,7 +415,7 @@
             <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base scroll-mt-24" id="faq">FAQ</h5>
             <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Frequently Asked Questions</h1>
             <div class="mt-5 md:mt-10 grid md:grid-cols-[max-content_1fr] max-w-5xl mx-auto gap-10">
-                <img data-aos-duration="500" data-aos="fade-right" data-aos-delay="500" src="{{ asset('assets/images/maskot/2.png') }}" class="w-60 md:block hidden max-w-full mt-auto" alt="">
+                <img data-aos-duration="500" data-aos="fade-right" src="{{ asset('assets/images/maskot/2.png') }}" class="w-60 md:block hidden max-w-full mt-auto" alt="">
                 <div class="mx-auto mt-10 space-y-4 w-full">
                     @foreach ($faqs as $faq)
                         <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="faq-item border border-gray-300 dark:border-light rounded-lg overflow-hidden bg-28-transparent hover:bg-light dark:hover:bg-two transition-all duration-200">

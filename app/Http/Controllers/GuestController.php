@@ -8,6 +8,7 @@ use App\Models\Visitor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Psy\CodeCleaner\IssetPass;
 
 class GuestController extends Controller
 {
@@ -44,59 +45,67 @@ class GuestController extends Controller
                 'name' => 'BCA'
             ],
             [
-                'logo' => asset('assets/images/sponsors/main/bca.webp'),
-                'name' => 'BCA'
+                'logo' => asset('assets/images/sponsors/main/lw.png'),
+                'name' => 'Living World'
+            ],
+            [
+                'logo' => asset('assets/images/sponsors/main/bni.webp'),
+                'name' => 'BNI'
             ],
             [
                 'logo' => asset('assets/images/sponsors/main/bca.webp'),
                 'name' => 'BCA'
             ],
             [
-                'logo' => asset('assets/images/sponsors/main/bca.webp'),
-                'name' => 'BCA'
+                'logo' => asset('assets/images/sponsors/main/lw.png'),
+                'name' => 'Living World'
             ],
             [
-                'logo' => asset('assets/images/sponsors/main/bca.webp'),
-                'name' => 'BCA'
+                'logo' => asset('assets/images/sponsors/main/bni.webp'),
+                'name' => 'BNI'
             ],
         ];
         $supportSponsors = [
             [
-                'logo' => asset('assets/images/sponsors/support/bni.webp'),
-                'name' => 'BNI'
+                'logo' => asset('assets/images/sponsors/support/biznet.png'),
+                'name' => 'Biznet'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/bni.webp'),
-                'name' => 'BNI'
+                'logo' => asset('assets/images/sponsors/support/bali-banana.png'),
+                'name' => 'Bali Banana'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/bni.webp'),
-                'name' => 'BNI'
+                'logo' => asset('assets/images/sponsors/support/the-keranjang.png'),
+                'name' => 'The Keranjang'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/bni.webp'),
-                'name' => 'BNI'
+                'logo' => asset('assets/images/sponsors/support/episode-serpong.png'),
+                'name' => 'Episode Serpong'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/bni.webp'),
-                'name' => 'BNI'
+                'logo' => asset('assets/images/sponsors/support/starbucks.png'),
+                'name' => 'Starbucks'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/bni.webp'),
-                'name' => 'BNI'
+                'logo' => asset('assets/images/sponsors/support/biznet.png'),
+                'name' => 'Biznet'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/bni.webp'),
-                'name' => 'BNI'
+                'logo' => asset('assets/images/sponsors/support/bali-banana.png'),
+                'name' => 'Bali Banana'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/bni.webp'),
-                'name' => 'BNI'
+                'logo' => asset('assets/images/sponsors/support/the-keranjang.png'),
+                'name' => 'The Keranjang'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/bni.webp'),
-                'name' => 'BNI'
+                'logo' => asset('assets/images/sponsors/support/episode-serpong.png'),
+                'name' => 'Episode Serpong'
             ],
+            [
+                'logo' => asset('assets/images/sponsors/support/starbucks.png'),
+                'name' => 'Starbucks'
+            ]
         ];
 
         $year = Carbon::now()->year;
@@ -283,10 +292,10 @@ class GuestController extends Controller
             $routeTarget = 'register';
         }
 
-        $postTestLink = ShortLink::where("back_half", "post-test")->first();
-        $preTestLink = ShortLink::where("back_half", "pre-test")->first();
+        $postTestLink = ShortLink::where("back_half", "post-test")->firstOrFail();
+        $preTestLink = ShortLink::where("back_half", "pre-test")->firstOrFail();
 
-        if(($postTestLink->is_expired || $postTestLink->is_not_started) && ($preTestLink->is_not_started || $preTestLink->is_expired)) {
+        if($postTestLink($postTestLink->is_expired || $postTestLink->is_not_started) && ($preTestLink->is_not_started || $preTestLink->is_expired)) {
             abort(404);
         }
 
