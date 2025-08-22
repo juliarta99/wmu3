@@ -67,7 +67,7 @@
 @endsection
 
 @section('scripts')
-<script src="https://js.pusher.com/8.0.1/pusher.min.js"></script>
+<script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
 <script>
     const webvisitorcountElement = document.getElementById("webvisitorcount");
     const teamcountElement = document.getElementById("teamcount");
@@ -75,12 +75,9 @@
     const linkshortenercountElement = document.getElementById("linkshortenercount");
     const regiscountElement = document.getElementById("regiscount");
 
-    var pusher = new Pusher("{{ env('REVERB_APP_KEY') }}", {
-        wsHost: "127.0.0.1",
-        wsPort: 8080,
-        forceTLS: false,
-        enabledTransports: ['ws'],
-        cluster: ""
+    var pusher = new Pusher("{{ env('PUSHER_APP_KEY') }}", {
+        cluster: "{{ env('PUSHER_APP_CLUSTER') }}",
+        forceTLS: true
     });
 
     pusher.connection.bind('connected', () => {
@@ -92,6 +89,7 @@
     });
 
     var channel = pusher.subscribe("home-admin");
+
     function animateUpdate(element, value) {
         element.innerText = value;
         element.classList.add("update");
