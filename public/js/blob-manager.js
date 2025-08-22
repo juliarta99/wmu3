@@ -16,7 +16,6 @@ class BlobManager {
     
     init() {
         this.startAnimation();
-        this.setupControls();
     }
     
     createBlob() {

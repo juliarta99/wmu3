@@ -9,7 +9,7 @@
                     <p data-aos-duration="500" data-aos="zoom-in" data-aos-delay="400" class="text-sm md:text-base text-center text-black dark:text-light">Setiap momen yang kita rekam hari ini adalah investasi untuk dikenang di masa depan. Dengan mendokumentasikannya, kita tidak hanya menyimpan gambar atau video, tetapi juga cerita dan perasaan yang akan tetap hidup di dalamnya</p>
                 </div>
                 <a href="/{{ $routeTarget }}" target="_blank" data-aos-duration="500" data-aos="fade-up" data-aos-delay="600">
-                    <button class="py-3 text-sm md:text-base px-5 rounded-full bg-main-gradient cursor-pointer text-light">
+                    <button class="hover:shadow-2xl hover:-translate-y-1 shadow-seven/30 transition-all duration-200 py-3 text-sm md:text-base px-5 rounded-full bg-main-gradient cursor-pointer text-light">
                         @if ($routeTarget == 'register')
                             Register Now
                         @elseif ($routeTarget == 'quiz')
@@ -86,36 +86,47 @@
             <img src="{{ asset('assets/images/gradient-blur-3.png') }}" class="w-full absolute top-0 -z-1" />
             <section class="py-14 md:py-30 max-w-lg mx-auto container px-3">
                 <div class="w-130 h-130 bg-seven/20 blur-[1000rem] absolute top-[50%] right-[-10%] translate-x-1/2 -z-1"></div>
-                <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">About Out Theme</h5>
-                <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-center text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light mt-5 font-bold">“Record Every <span class="text-seven">Moments</span> <br> To Relive In <span class="text-seven">The Future</span> ”</h1>
-                <p data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="text-sm md:text-base text-black dark:text-light mt-8 text-center">“Setiap momen yang kita abadikan dalam sebuah rekaman, akan terasa kembali hidup euforianya saat kita menontonnya kembali”</p>
+                <div class="relative group">
+                    <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">About Our Theme</h5>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-14 md:size-20 stroke-seven absolute -translate-x-1/2 top-1/2 -translate-y-1/2 left-1/2 scale-0 transition-all duration-750 group-hover:scale-100 group-hover:-rotate-45 group-hover:-translate-y-[20%] group-hover:-translate-x-full group-hover:left-0 group-hover:-top-5 group-hover:opacity-100 opacity-0">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-14 md:size-20 stroke-gray-800 absolute translate-x-1/2 top-1/2 -translate-y-1/2 right-1/2 scale-0 transition-all duration-750 group-hover:scale-100 group-hover:rotate-15 group-hover:-translate-y-[20%] group-hover:translate-x-full group-hover:right-0 group-hover:top-0 group-hover:opacity-100 opacity-0">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+                    </svg>
+                    <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-center text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light mt-5 font-bold">“Record Every <span class="text-seven">Moments</span> <br> To Relive In <span class="text-seven">The Future</span> ”</h1>
+                    <p data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="text-sm md:text-base text-black dark:text-light mt-8 text-center">“Setiap momen yang kita abadikan dalam sebuah rekaman, akan terasa kembali hidup euforianya saat kita menontonnya kembali”</p>
+                </div>
             </section>
         </div>
 
         <div class="relative">
             <img src="{{ asset('assets/images/gradient-blur-3.png') }}" class="w-full absolute bottom-0 -z-1" />
             <section class="py-14 md:py-30 max-w-5xl container px-3 mx-auto">
-                <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">About Out Logo</h5>
+                <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">About Our Logo</h5>
                 <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-center text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light mt-5 font-bold">Record Today, Cherish Tomorrow</h1>
-                <img data-aos-duration="700" data-aos="zoom-in" data-aos-delay="500" src="{{ asset('assets/images/logo.png') }}" class="max-w-full md:max-w-100 mx-auto my-12" alt="">
+                <div id="parent-logo-element" data-aos-duration="700" data-aos="zoom-in" data-aos-delay="500">
+                    <img id="logo-element" src="{{ asset('assets/images/logo.png') }}" class="max-w-full md:max-w-100 mx-auto my-5 md:my-12" alt="">
+                </div>
                 <div class="hidden md:grid grid-cols-2 gap-5">
-                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="col-span-2 p-5 rounded-lg flex flex-col items-center justify-center gap-3 bg-28-transparent">
+                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="col-span-2 p-5 rounded-lg flex flex-col items-center justify-center gap-3 bg-28-transparent hover:dark:bg-one hover:bg-light transition-all duration-300">
                         <h6 class="text-seven font-bold text-sm md:text-base text-center">Warna Biru Toska & Ungu</h6>
                         <p class="text-center text-black dark:text-light text-sm md:text-base">Biru Toska mengartikan teknologi, inovasi, dan kejernihan berpikir. Ungu merepresentasikan kreatifitas, imajinasi, dan ekspresi artistik</p>
                     </div>
-                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent">
+                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light">
                         <h6 class="text-seven font-bold text-sm md:text-base">Bentuk Segi Enam</h6>
                         <p class="text-black dark:text-light text-sm md:text-base">Bermakna stabilitas, harmoni, dan keseimbangan. Disamping itu bentuk tersebut juga menjadi ceriminan dari enam disiplin dalam bidang Multimedia, yaitu: desain grafis, fotografi, videografi, animasi, audio, dan teknologi digital</p>
                     </div>
-                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent">
+                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light">
                         <h6 class="text-seven font-bold text-sm md:text-base text-right">Bentuk Segitiga</h6>
                         <p class="text-black dark:text-light text-sm md:text-base text-right">Bermakna "Tri", simbol Trikona, yang dalam Sansekerta mewakili Kreativitas (cipta), Ekspresi (rasa), Teknologi (karsa). Bentuk ini juga layaknya tombol “Play” yang mengartikan memulai langkah baru</p>
                     </div>
-                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent">
+                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light">
                         <h6 class="text-seven font-bold text-sm md:text-base">Gerakan Dinamis & Simetris</h6>
                         <p class="text-black dark:text-light text-sm md:text-base">Gerakan spiral yang melingkar mengarah ke tengah, menunjukkan sinkronisasi antar aspek multimedia seperti desain grafis, fotografi, videografi, animasi, audio, dan teknologi digital</p>
                     </div>
-                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent">
+                    <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light">
                         <h6 class="text-seven font-bold text-sm md:text-base text-right">Gerakan Dinamis & Simetris</h6>
                         <p class="text-black dark:text-light text-sm md:text-base text-right">Bentuk Desain Grafis yang mewakili bidang desain dan menyerupai sebuah kamera yang mewakili bidang videografi dan fotografi</p>
                     </div>
@@ -124,31 +135,31 @@
                     <div class="swiper" id="swiper-logo">
                         <div class="swiper-wrapper items-center">
                             <div class="swiper-slide px-16">
-                                <div class="p-5 slide-content rounded-lg flex flex-col items-center justify-center gap-3 bg-28-transparent">
+                                <div class="p-5 slide-content rounded-lg flex flex-col items-center justify-center gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light">
                                     <h6 class="text-seven font-bold text-sm md:text-base text-center">Warna Biru Toska & Ungu</h6>
                                     <p class="text-center text-black dark:text-light text-sm md:text-base">Biru Toska mengartikan teknologi, inovasi, dan kejernihan berpikir. Ungu merepresentasikan kreatifitas, imajinasi, dan ekspresi artistik</p>
                                 </div>
                             </div>
                             <div class="swiper-slide px-16">
-                                <div class="p-5 slide-content rounded-lg flex flex-col items-center justify-center gap-3 bg-28-transparent">
+                                <div class="p-5 slide-content rounded-lg flex flex-col items-center justify-center gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light">
                                     <h6 class="text-seven font-bold text-sm md:text-base text-center">Bentuk Segi Enam</h6>
                                     <p class="text-black text-center dark:text-light text-sm md:text-base">Bermakna stabilitas, harmoni, dan keseimbangan. Disamping itu bentuk tersebut juga menjadi ceriminan dari enam disiplin dalam bidang Multimedia, yaitu: desain grafis, fotografi, videografi, animasi, audio, dan teknologi digital</p>
                                 </div>
                             </div>
                             <div class="swiper-slide px-16">
-                                <div class="p-5 slide-content rounded-lg flex flex-col items-center justify-center gap-3 bg-28-transparent">
+                                <div class="p-5 slide-content rounded-lg flex flex-col items-center justify-center gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light">
                                     <h6 class="text-seven font-bold text-sm md:text-base text-center">Bentuk Segitiga</h6>
                                     <p class="text-black dark:text-light text-sm md:text-base text-center">Bermakna "Tri", simbol Trikona, yang dalam Sansekerta mewakili Kreativitas (cipta), Ekspresi (rasa), Teknologi (karsa). Bentuk ini juga layaknya tombol “Play” yang mengartikan memulai langkah baru</p>
                                 </div>
                             </div>
                             <div class="swiper-slide px-16">
-                                <div class="p-5 slide-content rounded-lg flex flex-col items-center justify-center gap-3 bg-28-transparent">
+                                <div class="p-5 slide-content rounded-lg flex flex-col items-center justify-center gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light">
                                     <h6 class="text-seven font-bold text-sm md:text-base text-center">Gerakan Dinamis & Simetris</h6>
                                     <p class="text-black dark:text-light text-sm md:text-base text-center">Gerakan spiral yang melingkar mengarah ke tengah, menunjukkan sinkronisasi antar aspek multimedia seperti desain grafis, fotografi, videografi, animasi, audio, dan teknologi digital</p>
                                 </div>
                             </div>
                             <div class="swiper-slide px-16">
-                                <div class="p-5 slide-content rounded-lg flex flex-col items-center justify-center gap-3 bg-28-transparent">
+                                <div class="p-5 slide-content rounded-lg flex flex-col items-center justify-center gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light">
                                     <h6 class="text-seven font-bold text-sm md:text-base text-center">Gerakan Dinamis & Simetris</h6>
                                     <p class="text-black dark:text-light text-sm md:text-base text-center">Bentuk Desain Grafis yang mewakili bidang desain dan menyerupai sebuah kamera yang mewakili bidang videografi dan fotografi</p>
                                 </div>
@@ -164,77 +175,81 @@
         <div class="relative">
             <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute -translate-y-1/2 top-[50%] -z-1" />
             <section class="py-14 md:py-30 max-w-5xl mx-auto container px-3">
-                <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">About Out Maskot</h5>
+                <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">About Our Maskot</h5>
                 <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-center text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light mt-5 font-bold">LORY</h1>
                 <h5 data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="text-center text-sm md:text-base text-black dark:text-light mt-2">“Si Burung Hantu Cerdas dengan Penglihatan yang Tajam”</h5>
-                <img src="{{ asset("assets/images/maskot/1.png") }}" class="block md:hidden max-w-full w-60 my-10 mx-auto" alt="">
+                <div data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="{{ asset("assets/images/maskot/1.png") }}" class="block md:hidden max-w-full w-60 mt-8 md:my-10 mx-auto transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:drop-shadow-2xl drop-shadow-seven" alt="">
+                </div>
                 <div class="hidden md:flex items-center justify-center gap-5 my-10 relative">
                     <div class="w-130 h-130 bg-seven/20 blur-[1000rem] absolute top-[50%] right-[50%] -translate-y-1/2 translate-x-1/2 -z-1"></div>
                     <div class="flex items-center justify-center gap-4 flex-col w-[35%]">
-                        <div data-aos-duration="500" data-aos="zoom-in-left" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
+                        <div data-aos-duration="500" data-aos="zoom-in-left" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light w-full">
                             <h6 class="text-seven font-bold text-sm md:text-base">Busana Adat Bali</h6>
                             <p class="text-black dark:text-light text-sm md:text-base">Simbol Kearifan Lokal</p>
                         </div>
-                        <div data-aos-duration="500" data-aos="zoom-in-left" data-aos-delay="750" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
+                        <div data-aos-duration="500" data-aos="zoom-in-left" data-aos-delay="750" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light w-full">
                             <h6 class="text-seven font-bold text-sm md:text-base">Warna Mata yang Biru</h6>
                             <p class="text-black dark:text-light text-sm md:text-base">Teknologi, inovasi, dan masa depan</p>
                         </div>
-                        <div data-aos-duration="500" data-aos="zoom-in-left" data-aos-delay="1000" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
+                        <div data-aos-duration="500" data-aos="zoom-in-left" data-aos-delay="1000" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light w-full">
                             <h6 class="text-seven font-bold text-sm md:text-base">Warna Emas pada Pakaian</h6>
                             <p class="text-black dark:text-light text-sm md:text-base">Kemewahan, kesuksesan, dan kejayaan. Warna emas juga sering dikaitkan dengan kebijaksanaan, nilai tinggi, serta ambisi dan pencapaian luar biasa</p>
                         </div>
                     </div>
-                    <img data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" src="{{ asset("assets/images/maskot/1.png") }}" class="w-[30%]" alt="">
+                    <div data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="w-[30%] max-w-full">
+                        <img src="{{ asset('assets/images/maskot/1.png') }}" alt="" class="w-full transition-all duration-300 hover:scale-110 hover:-translate-y-8 hover:drop-shadow-2xl drop-shadow-seven" />
+                    </div>
                     <div class="flex items-center justify-center gap-4 flex-col w-[35%]">
-                        <div data-aos-duration="500" data-aos="zoom-in-right" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
+                        <div data-aos-duration="500" data-aos="zoom-in-right" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light w-full">
                             <h6 class="text-seven text-right font-bold text-sm md:text-base">Kamera</h6>
                             <p class="text-black dark:text-light text-sm md:text-base text-right">Siap mengabadikan setiap momen</p>
                         </div>
-                        <div data-aos-duration="500" data-aos="zoom-in-right" data-aos-delay="750" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
+                        <div data-aos-duration="500" data-aos="zoom-in-right" data-aos-delay="750" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light w-full">
                             <h6 class="text-seven text-right font-bold text-sm md:text-base">Warna Coklat pada Bulu</h6>
                             <p class="text-black dark:text-light text-sm md:text-base text-right">Memberikan kesan natural, rustic, dan organik</p>
                         </div>
-                        <div data-aos-duration="500" data-aos="zoom-in-right" data-aos-delay="1000" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
+                        <div data-aos-duration="500" data-aos="zoom-in-right" data-aos-delay="1000" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light w-full">
                             <h6 class="text-seven text-right font-bold text-sm md:text-base">Warna Ungu pada Pakaian</h6>
                             <p class="text-black dark:text-light text-sm md:text-base text-right">Kemewahan dan Keagungan</p>
                         </div>
                     </div>
                 </div>
-                <div class="block md:hidden my-10" data-aos-duration="500" data-aos="fade-up" data-aos-delay="500">
-                    <div class="swiper" id="swiper-logo">
+                <div class="block md:hidden" data-aos-duration="500" data-aos="fade-up" data-aos-delay="500">
+                    <div class="swiper" id="swiper-maskot">
                         <div class="swiper-wrapper items-center">
                             <div class="swiper-slide px-16">
-                                <div class="p-5 slide-content rounded-lg flex flex-col gap-3 bg-28-transparent w-full">
+                                <div class="p-5 slide-content rounded-lg flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light w-full">
                                     <h6 class="text-seven font-bold text-sm md:text-base text-center">Busana Adat Bali</h6>
                                     <p class="text-black dark:text-light text-sm md:text-base text-center">Simbol Kearifan Lokal</p>
                                 </div>
                             </div>
                             <div class="swiper-slide px-16">
-                                <div class="p-5 rounded-lg slide-content flex flex-col gap-3 bg-28-transparent w-full">
+                                <div class="p-5 rounded-lg slide-content flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light w-full">
                                     <h6 class="text-seven font-bold text-sm md:text-base text-center">Warna Mata yang Biru</h6>
                                     <p class="text-black dark:text-light text-sm md:text-base text-center">Teknologi, inovasi, dan masa depan</p>
                                 </div>
                             </div>
                             <div class="swiper-slide px-16">
-                                <div class="p-5 rounded-lg slide-content flex flex-col gap-3 bg-28-transparent w-full">
+                                <div class="p-5 rounded-lg slide-content flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light w-full">
                                     <h6 class="text-seven font-bold text-sm md:text-base text-center">Warna Emas pada Pakaian</h6>
                                     <p class="text-black dark:text-light text-sm md:text-base text-center">Kemewahan, kesuksesan, dan kejayaan. Warna emas juga sering dikaitkan dengan kebijaksanaan, nilai tinggi, serta ambisi dan pencapaian luar biasa</p>
                                 </div>
                             </div>
                             <div class="swiper-slide px-16">
-                                <div class="p-5 rounded-lg slide-content flex flex-col gap-3 bg-28-transparent w-full">
+                                <div class="p-5 rounded-lg slide-content flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light w-full">
                                     <h6 class="text-seven text-center font-bold text-sm md:text-base">Kamera</h6>
                                     <p class="text-black dark:text-light text-sm md:text-base text-center">Siap mengabadikan setiap momen</p>
                                 </div>
                             </div>
                             <div class="swiper-slide px-16">
-                                <div class="p-5 rounded-lg slide-content flex flex-col gap-3 bg-28-transparent w-full">
+                                <div class="p-5 rounded-lg slide-content flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light w-full">
                                     <h6 class="text-seven text-center font-bold text-sm md:text-base">Warna Coklat pada Bulu</h6>
                                     <p class="text-black dark:text-light text-sm md:text-base text-center">Memberikan kesan natural, rustic, dan organik</p>
                                 </div>
                             </div>
                             <div class="swiper-slide px-16">
-                                <div class="p-5 rounded-lg slide-content flex flex-col gap-3 bg-28-transparent w-full">
+                                <div class="p-5 rounded-lg slide-content flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light w-full">
                                     <h6 class="text-seven text-center font-bold text-sm md:text-base">Warna Ungu pada Pakaian</h6>
                                     <p class="text-black dark:text-light text-sm md:text-base text-center">Kemewahan dan Keagungan</p>
                                 </div>
@@ -283,7 +298,7 @@
                         @endforeach
                     </div>
                 </div>
-                <a data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" href="{{ route('showcase.index') }}" class="flex items-center justify-center mx-auto w-max">
+                <a data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" href="{{ route('showcase.index') }}" class="flex items-center justify-center mx-auto w-max hover:shadow-2xl hover:-translate-y-1 shadow-seven/30 transition-all duration-200">
                     <button class="text-sm md:text-base py-3 px-5 rounded-full bg-main-gradient cursor-pointer text-light">
                         View More
                     </button>
@@ -469,6 +484,51 @@
 
 @section('scripts')
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const parentLogo = document.getElementById('parent-logo-element');
+            const logoElement = document.getElementById('logo-element');
+            
+            let alreadyAnimated = false;
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.attributeName === "class" && !alreadyAnimated) {
+                        if (parentLogo.classList.contains("aos-animate")) {
+                            alreadyAnimated = true;
+                            logoElement.classList.add("animate-rotate-scale");
+
+                            logoElement.addEventListener("animationend", function() {
+                                logoElement.classList.remove("animate-rotate-scale");
+                            }, { once: true });
+                        }
+                    }
+                });
+            });
+
+            observer.observe(parentLogo, { attributes: true });
+
+            let isAnimating = false;
+            logoElement.addEventListener('mouseenter', function() {
+                if (!isAnimating) {
+                    startRotation(logoElement);
+                }
+            });
+
+            function startRotation(element) {
+                isAnimating = true;
+                element.classList.add('animate-rotate-scale');
+                
+                setTimeout(() => {
+                    element.classList.remove('animate-rotate-scale');
+                    isAnimating = false;
+                }, 6000);
+            }
+
+            logoElement.addEventListener('animationend', function() {
+                logoElement.classList.remove('animate-rotate-scale');
+                isAnimating = false;
+            });
+        });
+
         document.querySelectorAll('.faq-btn').forEach((btn) => {
             btn.addEventListener('click', () => {
                 const item = btn.parentElement;
