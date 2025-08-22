@@ -126,7 +126,7 @@
                 </div>
             </header>
 
-            <main id="main" class="flex-1 p-4 md:p-6 lg:overflow-auto lg:h-max pt-20 lg:pt-6 pb-24 lg:pb-6">
+            <main id="main" class="flex-1 p-4 md:p-6 lg:overflow-auto lg:h-max !pt-20 lg:!pt-6 pb-24 lg:pb-6">
                 @yield('content')
             </main>
 

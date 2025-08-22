@@ -30,12 +30,4 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-
-
-//test websoket
-Route::get('/homeadmin', function () {
-    broadcastParseValue();
-    return view('websoket'); 
-});
-
 Route::get('/{back_half}', [ShortLinkController::class, 'visitShortLink']);

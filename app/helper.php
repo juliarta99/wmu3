@@ -33,10 +33,8 @@ function broadcastParseValue() {
         'regiscount' => $regisLink->count_visitors ?? 0,
         'teamcount' => Team::count(),
         'showcasecount' => Showcase::count(),
-        'linkshortenercount' => ShortLink::count()
+        'linkshortenercount' => ShortLink::count(),
     ];
-    
-    $event = new HomeAdminEvent($data);
-    broadcast($event);
-    
+
+    broadcast(new HomeAdminEvent($data));
 }

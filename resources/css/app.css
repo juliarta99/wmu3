@@ -184,3 +184,12 @@
 .modal-content-exiting {
     @apply translate-y-12 scale-95;
 }
+
+.stat {
+  display: inline-block;
+  transition: all 0.4s ease-in-out;
+}
+.stat.update {
+  transform: scale(1.2);
+  color: #D42AE4;
+}

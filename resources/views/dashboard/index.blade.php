@@ -14,7 +14,7 @@
                     </div>
                     <h2 class="font-medium text-center text-sm md:text-base">Total Kunjungan Pada Website</h2>
                 </div>
-                <p class="text-lg md:text-xl font-bold">{{ $webvisitorcount }}</p>
+                <p class="text-lg md:text-xl font-bold stat" id="webvisitorcount">{{ $webvisitorcount }}</p>
             </div>
             <div class="rounded-xl bg-[#EEF1F7] p-5 flex flex-col items-center justify-center gap-4">
                 <div class="flex flex-col items-center justify-center gap-2">
@@ -25,7 +25,7 @@
                     </div>
                     <h2 class="font-medium text-center text-sm md:text-base">Team</h2>
                 </div>
-                <p class="text-lg md:text-xl font-bold">{{ $teamcount }}</p>
+                <p class="text-lg md:text-xl font-bold stat" id="teamcount">{{ $teamcount }}</p>
             </div>
             <div class="rounded-xl bg-[#EEF1F7] p-5 flex flex-col items-center justify-center gap-4">
                 <div class="flex flex-col items-center justify-center gap-2">
@@ -37,7 +37,7 @@
                     </div>
                     <h2 class="font-medium text-center text-sm md:text-base">Karya Peserta</h2>
                 </div>
-                <p class="text-lg md:text-xl font-bold">{{ $showcasecount }}</p>
+                <p class="text-lg md:text-xl font-bold stat" id="showcasecount">{{ $showcasecount }}</p>
             </div>
             <div class="rounded-xl bg-[#EEF1F7] p-5 flex flex-col items-center justify-center gap-4">
                 <div class="flex flex-col items-center justify-center gap-2">
@@ -49,7 +49,7 @@
                     </div>
                     <h2 class="font-medium text-center text-sm md:text-base">Shortener</h2>
                 </div>
-                <p class="text-lg md:text-xl font-bold">{{ $linkshortenercount }}</p>
+                <p class="text-lg md:text-xl font-bold stat" id="linkshortenercount">{{ $linkshortenercount }}</p>
             </div>
             <div class="rounded-xl bg-[#EEF1F7] p-5 flex flex-col items-center justify-center gap-4">
                 <div class="flex flex-col items-center justify-center gap-2">
@@ -60,7 +60,7 @@
                     </div>
                     <h2 class="font-medium text-center text-sm md:text-base">Total Kunjungan Pada Link Pendaftaran</h2>
                 </div>
-                <p class="text-lg md:text-xl font-bold">{{ $regiscount }}</p>
+                <p class="text-lg md:text-xl font-bold stat" id="regiscount">{{ $regiscount }}</p>
             </div>
         </div>
     </div>
@@ -69,5 +69,47 @@
 @section('scripts')
 <script src="https://js.pusher.com/8.0.1/pusher.min.js"></script>
 <script>
+    const webvisitorcountElement = document.getElementById("webvisitorcount");
+    const teamcountElement = document.getElementById("teamcount");
+    const showcasecountElement = document.getElementById("showcasecount");
+    const linkshortenercountElement = document.getElementById("linkshortenercount");
+    const regiscountElement = document.getElementById("regiscount");
+
+    var pusher = new Pusher("{{ env('REVERB_APP_KEY') }}", {
+        wsHost: "127.0.0.1",
+        wsPort: 8080,
+        forceTLS: false,
+        enabledTransports: ['ws'],
+        cluster: ""
+    });
+
+    pusher.connection.bind('connected', () => {
+        console.log('✅ Pusher connected!');
+    });
+
+    pusher.connection.bind('error', (err) => {
+        console.error('❌ Pusher connection error:', err);
+    });
+
+    var channel = pusher.subscribe("home-admin");
+    function animateUpdate(element, value) {
+        element.innerText = value;
+        element.classList.add("update");
+        setTimeout(() => {
+            element.classList.remove("update");
+        }, 400);
+    }
+
+    channel.bind("dashboard-updated", (data) => {
+        animateUpdate(webvisitorcountElement, data["webvisitorcount"]);
+        animateUpdate(teamcountElement, data["teamcount"]);
+        animateUpdate(showcasecountElement, data["showcasecount"]);
+        animateUpdate(linkshortenercountElement, data["linkshortenercount"]);
+        animateUpdate(regiscountElement, data["regiscount"]);
+    });
+
+    channel.bind('pusher:subscription_succeeded', () => {
+        console.log('📡 Subscribed to channel');
+    });
 </script>
 @endsection

@@ -115,6 +115,8 @@ class TeamController extends Controller
                 ];
             });
 
+            broadcastParseValue();
+
             if ($request->expectsJson()) {
                 return response()->json([
                     'success' => true,

@@ -195,6 +195,7 @@ class GuestController extends Controller
             ],
         ];
 
+        broadcastParseValue();
         return view('welcome', compact('title', 'routeTarget', 'mainSponsors', 'supportSponsors', 'showcases', 'faqs', 'timelines', 'contactPersons', 'hasShowcase'));
     }
 
