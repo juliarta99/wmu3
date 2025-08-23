@@ -335,26 +335,29 @@
 
                         const result = await response.json();
                         
+                        modal.hide();
                         
                         if (result.success) {
-                            modal.hide();
-                            modal.alert({
-                                title: 'Berhasil',
-                                message: result.message,
-                                icon: `<svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>`,
-                                onOk: () => window.location.href = "{{ route('dashboard.showcase.index') }}"
-                            });
+                            setTimeout(() => {
+                                modal.alert({
+                                    title: 'Berhasil',
+                                    message: result.message,
+                                    icon: `<svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>`,
+                                    onOk: () => window.location.href = "{{ route('dashboard.showcase.index') }}"
+                                });
+                            }, 500);
                         } else {
-                            modal.hide();
-                            modal.alert({
-                                title: 'Error',
-                                message: result.message || 'Gagal menghapus karya peserta',
-                                icon: `<svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>`
-                            });
+                            setTimeout(() => {
+                                modal.alert({
+                                    title: 'Error',
+                                    message: result.message || 'Gagal menghapus karya peserta',
+                                    icon: `<svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>`
+                                });
+                            }, 500);
                         }
                     } catch (error) {
                         console.error('Error deleting showcase:', error);

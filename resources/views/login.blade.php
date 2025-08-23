@@ -130,8 +130,8 @@
 
     <div id="modalContainer"></div>
 
-    <script src="{{ asset('js/modal.js') }}"></script>
-    <script src="{{ asset('js/form-handler.js') }}"></script>
+    <script src="{{ asset('js/modal.js') }}?v={{ time() }}"></script>
+    <script src="{{ asset('js/form-handler.js') }}?v={{ time() }}"></script>
     <script>
         const modal = new ReusableModal();
 

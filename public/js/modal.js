@@ -64,8 +64,11 @@ class ReusableModal {
         if (config.onShow) config.onShow(modal);
     }
 
-    hide(callback) {
+    hide(callback, config = null) {
         if (!this.isOpen || !this.currentModal) return;
+        if (config != null) {
+            if (config.onOk) config.onOk();
+        }
 
         const modal = this.currentModal;
         const content = modal.querySelector('.modal-content');
@@ -92,20 +95,20 @@ class ReusableModal {
         const closeBtn = modal.querySelector('.modal-close');
         if (closeBtn) {
             closeBtn.addEventListener('click', () => {
-                this.hide(config.onHide);
+                this.hide(config.onHide, config);
             });
         }
 
         modal.addEventListener('click', (e) => {
             if (e.target === modal && config.closeOnOverlay !== false) {
-                this.hide(config.onHide);
+                this.hide(config.onHide, config);
             }
         });
 
         const handleEscape = (e) => {
             if (e.key === 'Escape' && config.closeOnEscape !== false) {
                 document.removeEventListener('keydown', handleEscape);
-                this.hide(config.onHide);
+                this.hide(config.onHide, config);
             }
         };
         document.addEventListener('keydown', handleEscape);
