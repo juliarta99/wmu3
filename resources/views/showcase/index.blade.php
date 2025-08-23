@@ -35,17 +35,21 @@
             </form>
             @if(request()->hasAny(['search']))
                 <div data-aos-duration="500" data-aos="zoom-in" data-aos-delay="300" class="mt-4 p-4 bg-blue-50 dark:bg-one border border-blue-200 dark:border-two rounded-lg">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <svg class="w-5 h-5 text-blue-500 dark:text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
-                            </svg>
-                            <span class="text-blue-700 font-medium">Filter Aktif:</span>
-                            @if(request('search'))
-                                <span class="bg-blue-100 dark:bg-three text-blue-800 dark:text-blue-600 px-2 py-1 rounded text-sm">Pencarian: "{{ request('search') }}"</span>
-                            @endif
+                    <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+                        <div class="flex flex-col md:flex-row items-start md:items-center gap-2">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                                </svg>
+                                <span class="text-blue-700 font-medium">Filter Aktif:</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                @if(request('search'))
+                                    <span class="bg-blue-100 dark:bg-three text-blue-800 dark:text-blue-600 px-2 py-1 rounded text-sm">Pencarian: "{{ request('search') }}"</span>
+                                @endif
+                            </div>
                         </div>
-                        <a href="{{ route('showcase.index') }}#showcases" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Reset Filter</a>
+                        <a href="{{ route('showcase.index') }}#showcases" class="hover:text-yellow-100 text-light transition duration-200 bg-main-gradient py-2 px-4 rounded-md text-sm font-medium text-center">Reset Filter</a>
                     </div>
                 </div>
             @endif

@@ -50,32 +50,36 @@
     <!-- Filter Info -->
     @if(request()->hasAny(['search', 'year', 'sort_by']))
         <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                    <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
-                    </svg>
-                    <span class="text-blue-700 font-medium">Filter Aktif:</span>
-                    @if(request('search'))
-                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">Pencarian: "{{ request('search') }}"</span>
-                    @endif
-                    @if(request('year'))
-                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">Tahun: {{ request('year') }}</span>
-                    @endif
-                    @if(request('sort_by'))
-                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">
-                            Urutan: 
-                            @switch(request('sort_by'))
-                                @case('name') Nama A-Z @break
-                                @case('name_desc') Nama Z-A @break
-                                @case('year') Tahun @break
-                                @case('oldest') Terlama @break
-                                @default Terbaru
-                            @endswitch
-                        </span>
-                    @endif
+            <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-2">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                        </svg>
+                        <span class="text-blue-700 font-medium">Filter Aktif:</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        @if(request('search'))
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">Pencarian: "{{ request('search') }}"</span>
+                        @endif
+                        @if(request('year'))
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">Tahun: {{ request('year') }}</span>
+                        @endif
+                        @if(request('sort_by'))
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm">
+                                Urutan: 
+                                @switch(request('sort_by'))
+                                    @case('name') Nama A-Z @break
+                                    @case('name_desc') Nama Z-A @break
+                                    @case('year') Tahun @break
+                                    @case('oldest') Terlama @break
+                                    @default Terbaru
+                                @endswitch
+                            </span>
+                        @endif
+                    </div>
                 </div>
-                <a href="{{ route('dashboard.team.index') }}" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Reset Filter</a>
+                <a href="{{ route('dashboard.team.index') }}" class="hover:text-yellow-100 text-light transition duration-200 bg-main-gradient py-2 px-4 rounded-md text-sm font-medium text-center">Reset Filter</a>
             </div>
         </div>
     @endif
