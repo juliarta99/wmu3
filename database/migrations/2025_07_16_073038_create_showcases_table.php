@@ -16,11 +16,10 @@ return new class extends Migration
             $table->string('title', 100);
             $table->string('slug')->unique();
             $table->string('cover');
-            $table->integer('no_team');
-            $table->year('year');
             $table->text('description');
             $table->enum('champion', [1, 2, 3])->nullable();
             $table->string('youtube_id')->unique();
+            $table->foreignId('team_id');
             $table->timestamps();
         });
     }
