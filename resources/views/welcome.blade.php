@@ -107,7 +107,7 @@
                 <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">About Our Logo</h5>
                 <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-center text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light mt-5 font-bold">Record Today, Cherish Tomorrow</h1>
                 <div id="parent-logo-element" data-aos-duration="700" data-aos="zoom-in" data-aos-delay="500">
-                    <img id="logo-element" src="{{ asset('assets/images/logo.png') }}" class="max-w-full md:max-w-100 mx-auto my-5 md:my-12" alt="">
+                    <img id="logo-element" src="{{ asset('assets/images/logo-big.png') }}" class="max-w-full w-60 mx-auto my-5 md:my-12" alt="">
                 </div>
                 <div class="hidden md:grid grid-cols-2 gap-5">
                     <div data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="col-span-2 p-5 rounded-lg flex flex-col items-center justify-center gap-3 bg-28-transparent hover:dark:bg-one hover:bg-light transition-all duration-300">
