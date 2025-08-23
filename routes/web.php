@@ -9,7 +9,9 @@ use App\Http\Controllers\ShowcaseController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [GuestController::class, 'index'])->name('home');
+Route::middleware(['track_visitor'])->group(function () {
+    Route::get('/', [GuestController::class, 'index'])->name('home');
+});
 Route::get('/showcase', [GuestController::class, 'showcases'])->name('showcase.index');
 Route::get('/showcase/{showcase}', [GuestController::class, 'showcase'])->name('showcase.show');
 Route::get('/quiz', [GuestController::class, 'quiz'])->name('quiz.index');

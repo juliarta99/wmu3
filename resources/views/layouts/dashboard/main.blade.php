@@ -6,26 +6,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title }} Workshop Multimedia Udayana</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/logo.ico') }}">
-    {{-- SEO Meta Tags --}}
-    <meta name="description" content="Workshop Multimedia Udayana adalah">
-    <meta name="keywords" content="workshop, multimedia, bem udayana, kominfo udayana, workshop multimedia, workshop multimedia udayana, workshop multimedia udayana 2025, kominfo bem udayana, workshop gratis, kamera, multimedia, workshop 2025">
-    <meta name="author" content="Kementerian Komunikasi dan Informasi Badan Eksekutif Mahasiswa Universitas Udayana">
-    <link rel="canonical" href="https://wmu.com/">
-    {{-- Open Graph Meta Tags --}}
-    <meta property="og:url" content="https://wmu.com/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Workshop Multimedia Udayana">
-    <meta property="og:description" content="Workshop Multimedia Udayana adalah">
-    <meta property="og:image" content="https://wmu.com/assets/meta-tag.png">
-
-    {{-- Twitter Meta Tags --}}
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="wmu.com">
-    <meta property="twitter:url" content="https://wmu.com/">
-    <meta name="twitter:title" content="Workshop Multimedia Udayana">
-    <meta name="twitter:description" content="Workshop Multimedia Udayana adalah">
-    <meta name="twitter:image" content="https://wmu.com/assets/meta-tag.png">
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -11,7 +11,7 @@ class ReusableModal {
         modal.id = config.id || 'modal';
 
         modal.innerHTML = `
-            <div class="modal-content bg-white rounded-2xl w-full max-w-full md:max-w-lg max-h-screen md:max-h-[90vh] overflow-x-hidden overflow-y-auto transform translate-y-12 scale-95 transition-all duration-300">
+            <div class="modal-content bg-white rounded-2xl w-full max-w-[calc(100%-16px)] md:max-w-lg max-h-screen md:max-h-[90vh] overflow-x-hidden overflow-y-auto transform translate-y-12 scale-95 transition-all duration-300">
                 ${config.showHeader !== false ? `
                     <div class="modal-header flex items-center justify-between p-6 border-b border-gray-200">
                         <div class="flex items-center gap-3">

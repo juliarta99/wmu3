@@ -42,7 +42,7 @@ class AuthController extends Controller
                     ], 200);
                 }
 
-                return redirect()->intended(route('dashboard.index'))
+                return redirect()->intended('/dashboard')
                             ->with('success', 'Login berhasil!');
             }
 
@@ -94,6 +94,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect(route('login'));
+        return redirect('/login');
     }
 }

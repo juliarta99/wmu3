@@ -22,14 +22,14 @@ class TrackVisitorMiddleware
 
             $visitor = Visitor::where('year', $year)->first();
             if ($visitor) {
-                $visitor->count_visitors += 1;
+                $visitor->count_visitor += 1;
                 $visitor->save();
 
                 broadcastParseValue();
             } else {
                 Visitor::create([
                     'year' => $year,
-                    'count_visitors' => 1
+                    'count_visitor' => 1
                 ]);
             }
 

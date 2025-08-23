@@ -23,20 +23,6 @@ class GuestController extends Controller
     }
 
     public function index() {
-        $year = now()->year;
-        $visitor = Visitor::where('year', $year)->first();
-
-        if(!$visitor) {
-            Visitor::create([
-                'year' => $year,
-                'count_visitor' => 1
-            ]);
-        } else {
-            if(!Auth::check()) {
-                $visitor->count_visitor += 1;
-                $visitor->save();
-            }
-        }
         $title = "";
 
         $mainSponsors = [
@@ -143,24 +129,24 @@ class GuestController extends Controller
 
         $faqs = [
             [
-                'question' => 'Apa itu aplikasi ini?',
-                'answer'   => 'Aplikasi ini digunakan untuk mempermudah manajemen data secara real-time.'
+                'question' => 'Apa itu Workshop Multimedia Udayana Vol. 3?',
+                'answer'   => 'Workshop Multimedia Udayana Vol. 3 adalah kegiatan yang menggabungkan pembelajaran teori dan praktik di bidang videografi, di mana peserta akan berkolaborasi dalam tim untuk menghasilkan sebuah karya kreatif.'
             ],
             [
-                'question' => 'Bagaimana cara mendaftar?',
-                'answer'   => 'Klik tombol daftar di halaman utama, isi form, lalu submit.'
+                'question' => 'Siapa saja yang bisa mengikuti workshop ini?',
+                'answer'   => 'Workshop ini terbuka untuk mahasiswa maupun masyarakat umum yang memiliki minat di bidang multimedia, khususnya videografi, baik pemula maupun yang sudah berpengalaman.'
             ],
             [
-                'question' => 'Apakah data saya aman?',
-                'answer'   => 'Ya, semua data disimpan dengan enkripsi dan backup rutin.'
+                'question' => 'Bagaimana cara mendaftar workshop ini?',
+                'answer'   => 'Pendaftaran dapat dilakukan dengan klik tombol Register yang tersedia di bagian header website atau pada section pertama halaman landing page.'
             ],
             [
-                'question' => 'Bisakah saya mengubah informasi akun?',
-                'answer'   => 'Tentu, masuk ke pengaturan akun dan pilih opsi edit profil.'
+                'question' => 'Apa yang akan saya dapatkan dari mengikuti workshop ini?',
+                'answer'   => 'Peserta akan mendapatkan materi teori, praktik langsung, kesempatan berkolaborasi dalam tim, serta pengalaman menghasilkan karya videografi yang dapat diapresiasi dan dikembangkan lebih lanjut.'
             ],
             [
-                'question' => 'Siapa yang bisa menghubungi support?',
-                'answer'   => 'Setiap pengguna bisa menghubungi support melalui email atau chat live di dashboard.'
+                'question' => 'Apakah peserta akan mendapatkan sertifikat?',
+                'answer'   => 'Ya, setiap peserta yang mengikuti workshop hingga selesai akan mendapatkan sertifikat sebagai bentuk apresiasi dan bukti partisipasi.'
             ],
         ];
 
@@ -204,7 +190,6 @@ class GuestController extends Controller
             ],
         ];
 
-        broadcastParseValue();
         return view('welcome', compact('title', 'routeTarget', 'mainSponsors', 'supportSponsors', 'showcases', 'faqs', 'timelines', 'contactPersons', 'hasShowcase'));
     }
 
