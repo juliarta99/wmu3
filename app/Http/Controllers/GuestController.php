@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ShortLink;
 use App\Models\Showcase;
-use App\Models\Visitor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Psy\CodeCleaner\IssetPass;
 
 class GuestController extends Controller
 {
@@ -27,70 +24,58 @@ class GuestController extends Controller
 
         $mainSponsors = [
             [
-                'logo' => asset('assets/images/sponsors/main/bca.webp'),
-                'name' => 'BCA'
+                'logo' => asset('assets/images/sponsors/main/lw.png'),
+                'name' => 'Living World'
             ],
             [
                 'logo' => asset('assets/images/sponsors/main/lw.png'),
                 'name' => 'Living World'
             ],
             [
-                'logo' => asset('assets/images/sponsors/main/bni.webp'),
-                'name' => 'BNI'
-            ],
-            [
-                'logo' => asset('assets/images/sponsors/main/bca.webp'),
-                'name' => 'BCA'
-            ],
-            [
                 'logo' => asset('assets/images/sponsors/main/lw.png'),
                 'name' => 'Living World'
             ],
             [
-                'logo' => asset('assets/images/sponsors/main/bni.webp'),
-                'name' => 'BNI'
+                'logo' => asset('assets/images/sponsors/main/lw.png'),
+                'name' => 'Living World'
             ],
         ];
         $supportSponsors = [
             [
-                'logo' => asset('assets/images/sponsors/support/biznet.png'),
-                'name' => 'Biznet'
+                'logo' => asset('assets/images/sponsors/support/infokuyy.png'),
+                'name' => 'Infokuyy.id'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/bali-banana.png'),
-                'name' => 'Bali Banana'
+                'logo' => asset('assets/images/sponsors/support/cahaya-dewata.png'),
+                'name' => 'Cahaya Dewata'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/the-keranjang.png'),
-                'name' => 'The Keranjang'
+                'logo' => asset('assets/images/sponsors/support/sweetie-bites.jpg'),
+                'name' => 'Sweetie Bites by Nia'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/episode-serpong.png'),
-                'name' => 'Episode Serpong'
+                'logo' => asset('assets/images/sponsors/support/infokuyy.png'),
+                'name' => 'Infokuyy.id'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/starbucks.png'),
-                'name' => 'Starbucks'
+                'logo' => asset('assets/images/sponsors/support/cahaya-dewata.png'),
+                'name' => 'Cahaya Dewata'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/biznet.png'),
-                'name' => 'Biznet'
+                'logo' => asset('assets/images/sponsors/support/sweetie-bites.jpg'),
+                'name' => 'Sweetie Bites by Nia'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/bali-banana.png'),
-                'name' => 'Bali Banana'
+                'logo' => asset('assets/images/sponsors/support/infokuyy.png'),
+                'name' => 'Infokuyy.id'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/the-keranjang.png'),
-                'name' => 'The Keranjang'
+                'logo' => asset('assets/images/sponsors/support/cahaya-dewata.png'),
+                'name' => 'Cahaya Dewata'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/episode-serpong.png'),
-                'name' => 'Episode Serpong'
-            ],
-            [
-                'logo' => asset('assets/images/sponsors/support/starbucks.png'),
-                'name' => 'Starbucks'
+                'logo' => asset('assets/images/sponsors/support/sweetie-bites.jpg'),
+                'name' => 'Sweetie Bites by Nia'
             ]
         ];
 
@@ -181,12 +166,12 @@ class GuestController extends Controller
             [
                 'name' => 'Budi',
                 'wa' => '081999041364',
-                'line' => 'belum'
+                'line' => 'budihartawan_23'
             ],
             [
                 'name' => 'Savana',
                 'wa' => '083831048161',
-                'line' => 'belum'
+                'line' => 'o22omafy'
             ],
         ];
 

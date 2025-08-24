@@ -151,7 +151,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/contributor-manager.js') }}"></script>
+    <script src="{{ asset('js/contributor-manager.js') }}?v={{ time() }}"></script>
     <script>
         const modal = new ReusableModal();
         const currentYear = {{ now()->year }};

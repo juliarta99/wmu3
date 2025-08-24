@@ -29,7 +29,7 @@
                                 muted 
                                 loop  
                                 src="{{ asset('assets/videos/1.mp4') }}" 
-                                class="rounded-xl w-full aspect-video object-cover bg-28-transparent">
+                                class="rounded-xl w-full aspect-video object-cover">
                             </video>
                         </div>
                         <div class="swiper-slide">
@@ -38,7 +38,7 @@
                                 muted 
                                 loop  
                                 src="{{ asset('assets/videos/2.mp4') }}" 
-                                class="rounded-xl w-full aspect-video object-cover">
+                                class="rounded-xl w-full aspect-video object-cover bg-28-transparent">
                             </video>
                         </div>
                         <div class="swiper-slide">
@@ -56,6 +56,33 @@
                                 muted 
                                 loop  
                                 src="{{ asset('assets/videos/4.mp4') }}" 
+                                class="rounded-xl w-full aspect-video object-cover">
+                            </video>
+                        </div>
+                        <div class="swiper-slide">
+                            <video 
+                                autoplay 
+                                muted 
+                                loop  
+                                src="{{ asset('assets/videos/5.mp4') }}" 
+                                class="rounded-xl w-full aspect-video object-cover">
+                            </video>
+                        </div>
+                        <div class="swiper-slide">
+                            <video 
+                                autoplay 
+                                muted 
+                                loop  
+                                src="{{ asset('assets/videos/6.mp4') }}" 
+                                class="rounded-xl w-full aspect-video object-cover">
+                            </video>
+                        </div>
+                        <div class="swiper-slide">
+                            <video 
+                                autoplay 
+                                muted 
+                                loop  
+                                src="{{ asset('assets/videos/7.mp4') }}" 
                                 class="rounded-xl w-full aspect-video object-cover">
                             </video>
                         </div>
@@ -387,7 +414,7 @@
             <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Sponsored By</h1>
         </div>
         <div class="my-10">
-            <div class="swiper swiper-3" data-aos-duration="1500" data-aos="fade-up" data-aos-delay="500">
+            <div class="swiper" id="swiper-sponsor" data-aos-duration="1500" data-aos="fade-up" data-aos-delay="500">
                 <div class="swiper-wrapper">
                     @foreach ($mainSponsors as $sponsor)
                         <div class="swiper-slide">
@@ -588,6 +615,27 @@
             },
         })
 
+        const swiperSponsor = new Swiper('#swiper-sponsor', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 10,
+            speed:6000,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 60,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 60,
+                }
+            },
+        })
+
         const swiper2 = new Swiper('.swiper-6', {
             loop: true,
             slidesPerView: 3,
@@ -600,11 +648,11 @@
             breakpoints: {
                 640: {
                     slidesPerView: 4,
-                    spaceBetween: 20,
+                    spaceBetween: 40,
                 },
                 768: {
                     slidesPerView: 6,
-                    spaceBetween: 20,
+                    spaceBetween: 40,
                 }
             },
         })

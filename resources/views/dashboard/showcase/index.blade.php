@@ -244,7 +244,7 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/search.js') }}"></script>
+    <script src="{{ asset('js/search.js') }}?v={{ time() }}"></script>
     <script>
         const modal = new ReusableModal();
 
