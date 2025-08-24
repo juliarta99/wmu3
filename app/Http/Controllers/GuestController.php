@@ -42,8 +42,12 @@ class GuestController extends Controller
         ];
         $supportSponsors = [
             [
-                'logo' => asset('assets/images/sponsors/support/infokuyy.png'),
-                'name' => 'Infokuyy.id'
+                'logo' => asset('assets/images/sponsors/support/doss.png'),
+                'name' => 'DOSS'
+            ],
+            [
+                'logo' => asset('assets/images/sponsors/support/sony-center.png'),
+                'name' => 'Sony Center'
             ],
             [
                 'logo' => asset('assets/images/sponsors/support/cahaya-dewata.png'),
@@ -54,28 +58,28 @@ class GuestController extends Controller
                 'name' => 'Sweetie Bites by Nia'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/infokuyy.png'),
-                'name' => 'Infokuyy.id'
+                'logo' => asset('assets/images/sponsors/support/sekilas-bali.jpg'),
+                'name' => 'Sekilas Bali'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/cahaya-dewata.png'),
-                'name' => 'Cahaya Dewata'
-            ],
-            [
-                'logo' => asset('assets/images/sponsors/support/sweetie-bites.jpg'),
-                'name' => 'Sweetie Bites by Nia'
+                'logo' => asset('assets/images/sponsors/support/peliatan-hari-ini.jpg'),
+                'name' => 'Peliatan Hari ini'
             ],
             [
                 'logo' => asset('assets/images/sponsors/support/infokuyy.png'),
                 'name' => 'Infokuyy.id'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/cahaya-dewata.png'),
-                'name' => 'Cahaya Dewata'
+                'logo' => asset('assets/images/sponsors/support/event-corner.jpg'),
+                'name' => 'Event Corner'
             ],
             [
-                'logo' => asset('assets/images/sponsors/support/sweetie-bites.jpg'),
-                'name' => 'Sweetie Bites by Nia'
+                'logo' => asset('assets/images/sponsors/support/edaran-event.png'),
+                'name' => 'Edaran Event'
+            ],
+            [
+                'logo' => asset('assets/images/sponsors/support/info-badung-bali.png'),
+                'name' => 'Info Badung Bali'
             ]
         ];
 
