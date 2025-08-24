@@ -166,11 +166,13 @@ class GuestController extends Controller
             [
                 'name' => 'Budi',
                 'wa' => '081999041364',
+                'wa_link' => 'https://wa.me/6281999041364',
                 'line' => 'budihartawan_23'
             ],
             [
                 'name' => 'Savana',
                 'wa' => '083831048161',
+                'wa_link' => 'https://wa.me/6283831048161',
                 'line' => 'o22omafy'
             ],
         ];

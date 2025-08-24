@@ -316,7 +316,11 @@ class ShowcaseController extends Controller
 
             if (isset($validated['link_youtube'])) {
                 $ytid = $this->extractYoutubeId($validated["link_youtube"]);
-                $showcaseExistsYtId = Showcase::where('youtube_id', $ytid)->exists();
+                if($ytid != $showcase->youtube_id) {
+                    $showcaseExistsYtId = Showcase::where('youtube_id', $ytid)->exists();
+                } else {
+                    $showcaseExistsYtId = false;
+                }
                 if (!$ytid || $showcaseExistsYtId) {
                     if(!$ytid) {
                         $errorMessage = 'Link YouTube tidak valid. Pastikan menggunakan format URL YouTube yang benar!';
