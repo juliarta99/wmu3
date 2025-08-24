@@ -24,19 +24,19 @@ class GuestController extends Controller
 
         $mainSponsors = [
             [
-                'logo' => asset('assets/images/sponsors/main/lw.png'),
+                'logo' => asset('assets/images/sponsors/main/living-world.png'),
                 'name' => 'Living World'
             ],
             [
-                'logo' => asset('assets/images/sponsors/main/lw.png'),
+                'logo' => asset('assets/images/sponsors/main/living-world.png'),
                 'name' => 'Living World'
             ],
             [
-                'logo' => asset('assets/images/sponsors/main/lw.png'),
+                'logo' => asset('assets/images/sponsors/main/living-world.png'),
                 'name' => 'Living World'
             ],
             [
-                'logo' => asset('assets/images/sponsors/main/lw.png'),
+                'logo' => asset('assets/images/sponsors/main/living-world.png'),
                 'name' => 'Living World'
             ],
         ];
