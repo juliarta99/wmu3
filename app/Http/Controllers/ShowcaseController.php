@@ -159,8 +159,13 @@ class ShowcaseController extends Controller
             }
 
             $ytid = $this->extractYoutubeId($validated["link_youtube"]);
-            if (!$ytid) {
-                $errorMessage = 'Link YouTube tidak valid. Pastikan menggunakan format URL YouTube yang benar.';
+            $showcaseExistsYtId = Showcase::where('youtube_id', $ytid)->exists();
+            if (!$ytid || $showcaseExistsYtId) {
+                if(!$ytid) {
+                    $errorMessage = 'Link YouTube tidak valid. Pastikan menggunakan format URL YouTube yang benar!';
+                } elseif ($showcaseExistsYtId) {
+                    $errorMessage = 'Video YouTube ini sudah digunakan pada karya peserta lain!';
+                }
                 
                 if ($request->expectsJson()) {
                     return response()->json([
@@ -311,8 +316,13 @@ class ShowcaseController extends Controller
 
             if (isset($validated['link_youtube'])) {
                 $ytid = $this->extractYoutubeId($validated["link_youtube"]);
-                if (!$ytid) {
-                    $errorMessage = 'Link YouTube tidak valid. Pastikan menggunakan format URL YouTube yang benar.';
+                $showcaseExistsYtId = Showcase::where('youtube_id', $ytid)->exists();
+                if (!$ytid || $showcaseExistsYtId) {
+                    if(!$ytid) {
+                        $errorMessage = 'Link YouTube tidak valid. Pastikan menggunakan format URL YouTube yang benar!';
+                    } elseif ($showcaseExistsYtId) {
+                        $errorMessage = 'Video YouTube ini sudah digunakan pada karya peserta lain!';
+                    }
                     
                     if ($request->expectsJson()) {
                         return response()->json([
