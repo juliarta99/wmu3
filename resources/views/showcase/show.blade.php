@@ -8,7 +8,9 @@
                 <iframe id="ytplayer" type="text/html" 
                     src="{{ $showcase->youtubeEmbedUrl }}" 
                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
-                    frameborder="0">
+                    frameborder="0"
+                    allowfullscreen    
+                >
                 </iframe>
             </div>
             <div class="mt-5 md:mt-10 dark:bg-black bg-light shadow-2xl rounded-xl p-6 md:p-8">

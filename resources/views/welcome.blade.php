@@ -100,7 +100,7 @@
         </div>
 
         <section class="py-14 md:py-30 grid grid-cols-1 md:grid-cols-[max-content_1fr] gap-6 md:gap-10 relative max-w-6xl mx-auto container px-3">
-            <div class="w-130 h-130 bg-seven/30 blur-[1000rem] absolute top-0 left-1/2 md:left-[-50%] -translate-x-1/2 md:translate-x-1/2 -z-1"></div>
+            <div class="w-130 h-130 aspect-square max-w-full bg-seven/30 blur-[1000rem] absolute top-0 left-1/2 md:left-[-50%] -translate-x-1/2 md:translate-x-1/2 -z-1"></div>
             <img data-aos-duration="500" data-aos="fade-right" data-aos-delay="100" src="{{ asset('assets/images/maskot/3.png') }}" class="w-88 max-w-full mx-auto" alt="">
             <div class="text-center md:text-start">
                 <h5 data-aos-duration="500" data-aos="fade-left" data-aos-delay="100" class="text-sm md:text-base text-seven">About Us</h5>
@@ -112,7 +112,7 @@
         <div class="relative">
             <img src="{{ asset('assets/images/gradient-blur-3.png') }}" class="w-full absolute top-0 -z-1" />
             <section class="py-14 md:py-30 max-w-lg mx-auto container px-3">
-                <div class="w-130 h-130 bg-seven/20 blur-[1000rem] absolute top-[50%] right-[-10%] translate-x-1/2 -z-1"></div>
+                <div class="w-130 h-130 aspect-square max-w-full bg-seven/20 blur-[1000rem] absolute top-[50%] right-[-10%] translate-x-1/2 -z-1"></div>
                 <div class="relative group">
                     <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">About Our Theme</h5>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-14 md:size-20 stroke-seven absolute -translate-x-1/2 top-1/2 -translate-y-1/2 left-1/2 scale-0 transition-all duration-750 group-hover:scale-100 group-hover:-rotate-45 group-hover:-translate-y-[20%] group-hover:-translate-x-full group-hover:md:left-0 group-hover:md:-top-5 group-hover:left-[15%] group-hover:-top-[5%] group-hover:opacity-100 opacity-0">
@@ -209,7 +209,7 @@
                     <img src="{{ asset("assets/images/maskot/1.png") }}" class="block md:hidden max-w-full w-60 mt-8 md:my-10 mx-auto transition-all duration-300 hover:scale-105 hover:-translate-y-3 hover:drop-shadow-2xl drop-shadow-seven" alt="">
                 </div>
                 <div class="hidden md:flex items-center justify-center gap-5 my-10 relative">
-                    <div class="w-130 h-130 bg-seven/20 blur-[1000rem] absolute top-[50%] right-[50%] -translate-y-1/2 translate-x-1/2 -z-1"></div>
+                    <div class="w-130 h-130 aspect-square max-w-full bg-seven/20 blur-[1000rem] absolute top-[50%] right-[50%] -translate-y-1/2 translate-x-1/2 -z-1"></div>
                     <div class="flex items-center justify-center gap-4 flex-col w-[35%]">
                         <div data-aos-duration="500" data-aos="zoom-in-left" data-aos-delay="500" class="p-5 rounded-lg flex flex-col gap-3 bg-28-transparent transition-all duration-300 hover:dark:bg-one hover:bg-light w-full">
                             <h6 class="text-seven font-bold text-sm md:text-base">Busana Adat Bali</h6>
@@ -297,7 +297,7 @@
         <section class="py-10 md:py-24 relative">
             <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute -translate-y-1/2 top-[50%] -z-1" />
             <div class="container px-3 mx-auto relative">
-                <div class="w-130 h-130 bg-seven/30 blur-[1000rem] absolute top-0 right-[-50%] -translate-x-1/2 -z-1"></div>
+                <div class="w-130 h-130 aspect-square max-w-full bg-seven/30 blur-[1000rem] absolute top-0 right-[-50%] -translate-x-1/2 -z-1"></div>
                 <h5  data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">Masterpiece</h5>
                 <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Showcase</h1>
                 <p data-aos-duration="500" data-aos="fade-up" data-aos-delay="500" class="text-black text-sm md:text-base dark:text-light text-center mt-2">Explore hasil karya dari peserta Workshop Multimedia Udayana</p>
@@ -306,7 +306,9 @@
                         <iframe id="ytplayer" type="text/html" 
                             src="{{ $showcases[0]->youtubeEmbedUrl }}" 
                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
-                            frameborder="0">
+                            frameborder="0"
+                            allowfullscreen
+                        >
                         </iframe>
                     </div>
 
@@ -335,7 +337,7 @@
     @endif
 
     <section class="py-10 md:py-24 relative">
-        <div class="w-130 h-130 bg-seven/20 blur-[1000rem] absolute top-0 left-[-50%] translate-x-1/2 -z-1"></div>
+        <div class="w-130 h-130 aspect-square max-w-full bg-seven/20 blur-[1000rem] absolute top-0 left-[-50%] translate-x-1/2 -z-1"></div>
         <div class="container px-3 mx-auto">
             <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">Timeline</h5>
             <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Important Event Dates</h1>
@@ -408,7 +410,7 @@
 
     <section class="py-10 md:py-24 relative">
         <img src="{{ asset('assets/images/gradient-blur-3.png') }}" class="w-full absolute -top-[50%] -z-1" />
-        <div class="w-130 h-130 bg-seven/10 blur-[1000rem] absolute top-0 right-[-50%] -translate-x-1/2 -z-1"></div>
+        <div class="w-130 h-130 aspect-square max-w-full bg-seven/10 blur-[1000rem] absolute top-0 right-[-50%] -translate-x-1/2 -z-1"></div>
         <div class="container px-3 mx-auto">
             <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base">Sponsor</h5>
             <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Sponsored By</h1>
@@ -437,7 +439,7 @@
 
     <section class="py-10 md:py-24 relative">
         <img src="{{ asset('assets/images/gradient-blur-2.png') }}" class="w-full absolute -translate-y-1/2 top-[50%] -z-1" />
-        <div class="w-130 h-130 bg-seven/30 blur-[1000rem] absolute top-0 left-[-50%] translate-x-1/2 -z-1"></div>
+        <div class="w-130 h-130 aspect-square max-w-full bg-seven/30 blur-[1000rem] absolute top-0 left-[-50%] translate-x-1/2 -z-1"></div>
         <div class="container px-3 mx-auto">
             <h5 data-aos-duration="500" data-aos="zoom-in" data-aos-delay="100" class="text-seven text-center text-sm md:text-base scroll-mt-24" id="faq">FAQ</h5>
             <h1 data-aos-duration="500" data-aos="fade-up" data-aos-delay="300" class="text-2xl sm:textx-3xl md:text-4xl text-black dark:text-light text-center font-bold">Frequently Asked Questions</h1>

@@ -39,8 +39,8 @@
 </head>
 <body class="bg-light overflow-hidden">
     <img src="{{ asset('assets/images/gradient-blur.png') }}" class="w-full absolute top-0 -z-1" />
-    <div class="w-130 h-130 bg-seven/30 md:bg-seven/50 blur-[1000rem] absolute -bottom-1/2 -left-1/2 translate-x-1/2 -z-1"></div>
-    <div class="w-130 h-130 bg-seven/30 md:bg-seven/50 blur-[1000rem] hidden lg:block absolute -top-1/2 -right-1/2 -translate-x-1/2 -z-1"></div>
+    <div class="w-130 h-130 aspect-square max-w-full bg-seven/30 md:bg-seven/50 blur-[1000rem] absolute -bottom-1/2 -left-1/2 translate-x-1/2 -z-1"></div>
+    <div class="w-130 h-130 aspect-square max-w-full bg-seven/30 md:bg-seven/50 blur-[1000rem] hidden lg:block absolute -top-1/2 -right-1/2 -translate-x-1/2 -z-1"></div>
     <section class="relative min-h-screen max-h-screen overflow-auto w-full flex items-center justify-center py-10 z-0">
         <form id="login-form" action="{{ route('login.post') }}" class="flex flex-col w-full gap-4 p-4 md:p-5 max-w-full md:max-w-2xl">
             @csrf

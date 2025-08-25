@@ -194,7 +194,9 @@
                     <iframe id="ytplayer" type="text/html" 
                         src="" 
                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; background-color: rgb(196, 196, 196);"
-                        frameborder="0">
+                        frameborder="0"
+                        allowfullscreen
+                    >
                     </iframe>
                 </div>
             </div>

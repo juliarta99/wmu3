@@ -27,5 +27,10 @@ class DatabaseSeeder extends Seeder
                 'team_id' => $team->id
             ]);
         };
+
+        User::create([
+            "username" => "inti-minwmuvol3",
+            "password" => Hash::make("intiWMU#3password")
+        ]);
     }
 }

@@ -80,7 +80,11 @@ class GuestController extends Controller
             [
                 'logo' => asset('assets/images/sponsors/support/info-badung-bali.png'),
                 'name' => 'Info Badung Bali'
-            ]
+            ],
+            [
+                'logo' => asset('assets/images/sponsors/support/bouqita.jpeg'),
+                'name' => 'Bouqita.id'
+            ],
         ];
 
         $year = Carbon::now()->year;

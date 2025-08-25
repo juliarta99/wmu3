@@ -47,7 +47,7 @@
         <div class="flex flex-col gap-4 pt-14">
             <a href="/" class="text-black w-max text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">Home</a>
             <a href="/#about" class="text-black w-max text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">About</a>
-            @if ($routeTarget != 'showcase')
+            @if ($routeTarget != 'showcase' && $hasShowcase)
                 <a href="{{ route('showcase.index') }}" class="text-black w-max text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">Showcase</a>
             @endif
             <a href="/#faq" class="text-black w-max text-sm lg:text-base dark:text-light hover:text-seven transition-all duration-200">FAQ</a>
