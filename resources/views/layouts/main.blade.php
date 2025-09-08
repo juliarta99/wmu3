@@ -3,54 +3,28 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title }} Workshop Multimedia Udayana</title>
+    <title>@yield('title', $title ?? '') Workshop Multimedia Udayana</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/images/logo.ico') }}">
-   {{-- SEO Meta Tags --}}
-   <meta name="description" content="Workshop Multimedia Udayana adalah">
-   <meta name="keywords" content="workshop, multimedia, bem udayana, kominfo udayana, workshop multimedia, workshop multimedia udayana, workshop multimedia udayana 2025, kominfo bem udayana, workshop gratis, kamera, multimedia, workshop 2025">
-   <meta name="author" content="Kementerian Komunikasi dan Informasi Badan Eksekutif Mahasiswa Universitas Udayana">
-   <link rel="canonical" href="https://wmu.com/">
-   {{-- Open Graph Meta Tags --}}
-   <meta property="og:url" content="https://wmu.com/">
-   <meta property="og:type" content="website">
-   <meta property="og:title" content="Workshop Multimedia Udayana">
-   <meta property="og:description" content="Workshop Multimedia Udayana adalah">
-   <meta property="og:image" content="https://wmu.com/assets/meta-tag.png">
+    {{-- SEO Meta Tags --}}
+    <meta name="description" content="Workshop Multimedia Udayana adalah sebuah kegiatan yang menggabungkan pembelajaran teori dan praktik di bidang videografi">
+    <meta name="keywords" content="workshop, multimedia, bem udayana, kominfo udayana, workshop multimedia, workshop multimedia udayana, workshop multimedia udayana 2025, kominfo bem udayana, workshop gratis, kamera, multimedia, workshop 2025">
+    <meta name="author" content="Kementerian Komunikasi dan Informasi Badan Eksekutif Mahasiswa Universitas Udayana">
+    <link rel="canonical" href="{{ env('APP_URL') }}">
+    
+    {{-- Open Graph Meta Tags --}}
+    <meta property="og:url" content="{{ env('APP_URL') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Workshop Multimedia Udayana">
+    <meta property="og:description" content="Workshop Multimedia Udayana adalah sebuah kegiatan yang menggabungkan pembelajaran teori dan praktik di bidang videografi">
+    <meta property="og:image" content="{{ asset('assets/images/logo.png') }}">
 
-   {{-- Twitter Meta Tags --}}
-   <meta name="twitter:card" content="summary_large_image">
-   <meta property="twitter:domain" content="wmu.com">
-   <meta property="twitter:url" content="https://wmu.com/">
-   <meta name="twitter:title" content="Workshop Multimedia Udayana">
-   <meta name="twitter:description" content="Workshop Multimedia Udayana adalah">
-   <meta name="twitter:image" content="https://wmu.com/assets/meta-tag.png">
-
-   {{-- Structured Data (JSON-LD for SEO) --}}
-   <script type="application/ld+json">
-   {
-     "@context": "https://schema.org",
-     "@type": "Event",
-     "name": "Workshop Multimedia Udayana",
-     "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-     "eventStatus": "https://schema.org/EventScheduled",
-     "location": {
-       "@type": "Place",
-       "name": "Universitas Udayana",
-       "address": {
-         "@type": "PostalAddress",
-         "addressLocality": "Bali",
-         "addressCountry": "ID"
-       }
-     },
-     "image": ["https://wmu.com/assets/meta-tag.png"],
-     "description": "Workshop Multimedia Udayana adalah",
-     "organizer": {
-       "@type": "Organization",
-       "name": "Kementerian Komunikasi dan Informasi Badan Eksekutif Mahasiswa Universitas Udayana",
-       "url": "https://wmu.com"
-     }
-   }
-   </script>
+    {{-- Twitter Meta Tags --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="wmu.com">
+    <meta property="twitter:url" content="{{ env('APP_URL') }}">
+    <meta name="twitter:title" content="Workshop Multimedia Udayana">
+    <meta name="twitter:description" content="Workshop Multimedia Udayana adalah sebuah kegiatan yang menggabungkan pembelajaran teori dan praktik di bidang videografi">
+    <meta name="twitter:image" content="{{ asset('assets/images/logo.png') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,17 +44,75 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="min-h-screen overflow-x-hidden bg-white dark:bg-gradient-to-b dark:from-[#0A091D] dark:from-0% dark:via-one dark:via-10% dark:to-[#0A091D] dark:to-100% dark:bg-no-repeat">
-    @include('layouts.header')
+    <div id="blob-container" class="fixed inset-0 -z-10"></div>
+    <main class="max-w-full overflow-hidden relative z-1">
+      @include('layouts.header')
+  
+      <img src="{{ asset('assets/images/gradient-blur.png') }}" class="w-full absolute top-0 -z-1" />
+     
+      @yield('content')
+     
+      @include('layouts.footer')
+    </main>
     
-    <img src="{{ asset('assets/images/gradient-blur.png') }}" class="w-full absolute top-0 -z-1" />
+    <script src="{{ asset('js/blob-manager.js') }}"></script>
+    <script>  
+      let blobManager;
+      document.addEventListener('DOMContentLoaded', () => {
+          blobManager = new BlobManager();
+      });
+    </script>
+    <script>
+      const qrCodeBlack = new QRCodeStyling({
+          width: 120,
+          height: 120,
+          type: "canvas",
+          data: "{{ url('register') }}",
+          image: "{{ asset('assets/images/logo.png') }}",
+          dotsOptions: {
+              color: "#070707",
+              type: "rounded"
+          },
+          backgroundOptions: {
+              color: "transparent"
+          },
+          imageOptions: {
+              crossOrigin: "anonymous",
+              margin: 5,
+              width: 80,
+              height: 80
+          }
+      });
+      qrCodeBlack.append(document.getElementById("qrcode-black"));
+      
+      const qrCodeWhite = new QRCodeStyling({
+          width: 120,
+          height: 120,
+          type: "canvas",
+          data: "{{ url('register') }}",
+          image: "{{ asset('assets/images/logo.png') }}",
+          dotsOptions: {
+              color: "#FCFDFD",
+              type: "rounded"
+          },
+          backgroundOptions: {
+              color: "transparent"
+          },
+          imageOptions: {
+              crossOrigin: "anonymous",
+              margin: 5,
+              width: 80,
+              height: 80
+          }
+      });
+      qrCodeWhite.append(document.getElementById("qrcode-white"));
+    </script>
 
-    @yield('content')
-    
-    @include('layouts.footer')
     <script>
       const navbar = document.getElementById('navbar');
 
@@ -126,8 +158,55 @@
           addRotateAnimation(sunIcon);
         }
       });
-    </script>
 
+      document.addEventListener("DOMContentLoaded", () => {
+        const humberger = document.getElementById("humberger");
+        const navMobile = document.getElementById("nav-mobile");
+        const line1 = document.querySelector("#humberger .line1");
+        const line2 = document.querySelector("#humberger .line2");
+        const line3 = document.querySelector("#humberger .line3");
+
+        function toggleNav() {
+          line1.classList.toggle("rotate-45");
+          line1.classList.toggle("translate-y-1");
+
+          line2.classList.toggle("scale-0");
+
+          line3.classList.toggle("-rotate-45");
+          line3.classList.toggle("-translate-y-2");
+
+          navMobile.classList.toggle("-translate-y-[100%]");
+          navMobile.classList.toggle("translate-y-0");
+        }
+
+        humberger.addEventListener("click", (e) => {
+          e.stopPropagation();
+          toggleNav();
+        });
+
+        document.addEventListener("click", (e) => {
+          if (
+            !navMobile.classList.contains("-translate-y-[100%]") && 
+            !navMobile.contains(e.target) && 
+            !humberger.contains(e.target) 
+          ) {
+            toggleNav();
+          }
+        });
+
+        navMobile.querySelectorAll("a, button").forEach((el) => {
+          el.addEventListener("click", () => {
+            if (!navMobile.classList.contains("-translate-y-[100%]")) {
+              toggleNav();
+            }
+          });
+        });
+      });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
     @yield('scripts')
 </body>
 </html>

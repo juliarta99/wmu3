@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('contributors', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->foreignId('showcase_id');
+            $table->foreignId('team_id');
             $table->timestamps();
         });
     }

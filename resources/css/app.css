@@ -69,3 +69,127 @@
 .animate-rotate-swing {
     animation: rotate-swing 1.5s ease-in-out;
 }
+
+@keyframes animate-rotate-scale {
+  0% { 
+    transform: scale(1) rotate(0deg); 
+  }
+  50% {
+    transform: scale(1.1) rotate(360deg); 
+  }
+  100% { 
+    transform: scale(1) rotate(0deg); 
+  }
+}
+
+.animate-rotate-scale {
+  animation: animate-rotate-scale 6s ease-in-out forwards;
+}
+
+@layer base {
+    :root {
+        --modal-timing-show: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --modal-timing-hide: ease-out;
+        --modal-duration-show: 300ms;
+        --modal-duration-hide: 200ms;
+    }
+}
+
+@layer utilities {
+    .animate-modal-show {
+        animation: modal-show var(--modal-duration-show) var(--modal-timing-show) forwards;
+    }
+    
+    .animate-modal-hide {
+        animation: modal-hide var(--modal-duration-hide) var(--modal-timing-hide) forwards;
+    }
+    
+    .animate-overlay-show {
+        animation: overlay-show var(--modal-duration-show) ease forwards;
+    }
+    
+    .animate-overlay-hide {
+        animation: overlay-hide var(--modal-duration-hide) ease forwards;
+    }
+}
+
+@keyframes modal-show {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes modal-hide {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+}
+
+@keyframes overlay-show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes overlay-hide {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.modal-overlay {
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-entering {
+    @apply opacity-0 invisible;
+}
+
+.modal-entered {
+    @apply opacity-100 visible;
+}
+
+.modal-exiting {
+    @apply opacity-0 invisible;
+}
+
+.modal-content-entering {
+    @apply translate-y-12 scale-95;
+}
+
+.modal-content-entered {
+    @apply translate-y-0 scale-100;
+}
+
+.modal-content-exiting {
+    @apply translate-y-12 scale-95;
+}
+
+.stat {
+  display: inline-block;
+  transition: all 0.4s ease-in-out;
+}
+.stat.update {
+  transform: scale(1.2);
+  color: #D42AE4;
+}
